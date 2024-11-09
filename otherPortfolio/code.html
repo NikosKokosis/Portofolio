@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myportfolio</title>
+    <link rel="stylesheet" href="style.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/c701d16c05.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="portfolio-container">
+            <ul class="navlist">
+                <li><a href="#"home>home</a></li>
+                <li><a href="#"about>about</a></li>
+                <li><a href="#"services>services</a></li>
+                <li><a href="#"projects>projects</a></li>
+                <li><a href="#"contact>contact</a></li>
+            </ul>
+            <div class="left-container">
+<div class="icons">
+   <i class="fa-brands fa-facebook-f"></i>
+   <i class="fa-brands fa-linkedin-in"></i>
+   <i class="fa-brands fa-twitter"></i>
+   <i class="fa-brands fa-codepen"></i>
+   
+
+
+</div>
+<div class="content">
+    <h2 class="intro">Hello, I Am<span> Zakia Shahan</span></h2>
+    <h1>Web Developer</h1>
+    <p class="detail">As a dedicated frontend developer,i specialize in crafting responsive,user-friendly interfaces that bridge design and functionality.With a strong foundation in HTML,CSS,Type Script, and modern library like Next.Js,i focus on creating seamless user experiences that not only look great but perform optimally across devices.My passion for clean,efficient code and attention to etail ensures that every project that i work on is both aesthetically pleasing and technically sound.I am comitted to continuous learning and staying up-to-date with the latest industry trends to deliver innovative solutions that meet user needs and exceed expectations.</p>
+<div class="btn-container">
+    <button>Hire Me</button>
+    <button>View Project</button>
+
+</div>
+
+
+</div>
+            </div>
+            <div class="right-container"></div>
+            <div class="design">
+                         <div class="circle"></div>
+                <div class="circle"></div>
+        
+    
+</div>
+    </div>
+   
+    
+     <div id="about">
+        <div id="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="girl pic.jpg" height="550px"width="400px">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title"><span>About me</span></h1>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus doloribus excepturi a qui repellendus eos enim accusamus ut iure, soluta exercitationem molestias aliquam placeat beatae. Accusantium cum suscipit pariatur sunt eaque voluptatem tempora eveniet magnam aperiam aliquid. Et aperiam velit dolor quis dignissimos quidem molestiae. Molestias ab expedita exercitationem eveniet suscipit ipsa aliquid vel officiis beatae reiciendis, at illum repudiandae aperiam tempora nobis ut magnam est ipsam. In sit laboriosam sint dicta architecto fuga quos cumque placeat suscipit, hic, quibusdam illum ipsa deleniti incidunt nulla nemo ea, provident aspernatur voluptas. Voluptatibus odit, omnis quo aut porro nemo tempore! Quo, incidunt.</p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links"onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links"onclick="opentab('education')">Education</p>
+
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>UI?UX</span><br>Designing web/App interfces</li>
+                        <li><span>Web Development</span><br> web/App Development</li>
+                        <li><span>App Development</span><br>Building Anroid apps</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>UI?UX</span><br>one year experience as a freelancer</li>
+                        <li><span>Web Development</span><br> one year experience as a freelancer</li>
+                        <li><span>App Development</span><br> one year experience as a freelancer</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>Graduation</span><br>From karachi university</li>
+                        <li><span>Web Development Course</span><br> From GIAIC</li>
+                        <li><span>App Development</span><br>From GIAIC</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
+     </div>
+
+     <!-- .................services.......... -->
+      <div id="services">
+        <div class="container">
+            <h1 class="sub-title2"><span>My Services</span></h1>
+            <div class="services-list">
+                <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>Web Design</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, placeat!lorem10 lorem lore lorem lorem
+
+                    </p>
+                    <!-- <a href="#">learn more</a> -->
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-crop-simple"></i>
+                    <h2>UI/UX Design</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, placeat!llrem lorem lorem
+                    </p>
+                    <!-- <a href="#">learn more</a> -->
+                </div>
+
+                <div>
+                    <i class="fa-brands fa-app-store-ios"></i>
+                    <h2>App Design</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, placeat!
+                        lorem lorem lorem orem
+                    </p>
+                    <!-- <a href="#">learn more</a> -->
+                </div>
+            </div>
+        </div>
+      </div>
+
+<script>
+    var tablinks=document.getElementsByClassName("tab-links")
+    var tabcontents=document.getElementsByClassName("tab-contents")
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+    
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+</body>
+</html>

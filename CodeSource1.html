@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Section</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <style>
+    /* Section styles */
+    .about-section {
+      text-align: center;
+      padding: 50px 0;
+    }
+    .about-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .about-section img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    .about-section p {
+      color: #333;
+    }
+
+    /* Additional CSS for Projects Section */
+    .projects-section h2 {
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+    .card {
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .card-img-top {
+      max-height: 180px;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 15px;
+    }
+    .card-title {
+      font-size: 1.25rem;
+    }
+    .card-text {
+      margin-bottom: 15px;
+    }
+
+    /* Additional CSS for Skills Section */
+    .skills-section h2 {
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+    .skills-section .card {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .skills-section .card-img-top {
+      padding: 20px;
+      background-color: #f8f9fa;
+      height: 180px;
+      object-fit: contain;
+    }
+    .skills-section .card-body {
+      padding: 15px;
+    }
+    .skills-section .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 15px;
+    }
+    .skills-section .btn-outline-primary {
+      color: #007bff;
+      border-color: #007bff;
+    }
+    .skills-section .btn-outline-primary:hover {
+      color: #fff;
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    /* Additional CSS for Contact Section */
+    .contact-section {
+      padding: 50px 0;
+    }
+    .contact-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+    .contact-section p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .social-icon {
+      width: 50px;
+      margin-bottom: 10px;
+    }
+    .social-icon:hover {
+      opacity: 0.7;
+    }
+    .contact-section a {
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .contact-section a:hover {
+      color: #ddd;
+    }
+
+    /* CSS for Sticky Navbar */
+    .navbar {
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    body {
+      padding-top: 56px;
+      background: linear-gradient(135deg, #f0f2f5 0%, #d0d7df 100%);
+      color: #333;
+    }
+
+    /* Specific background styles for sections */
+    #about, .skills-section, .projects-section {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 50px 0;
+      margin: 30px 0;
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Style for navigation bar links */
+    .navbar-nav .nav-link {
+      color: white;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #f8f9fa;
+    }
+
+    @media (max-width: 992px) {
+      .navbar-collapse {
+        background-color: #343a40;
+      }
+    }
+
+    body {
+      background: linear-gradient(135deg, #f0f2f5 0%, #d0d7df 100%);
+      color: #333;
+      padding-top: 56px;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+
+    .skill-icon {
+      width: 50px;
+      height: auto;
+    }
+
+    .sas-icon {
+      width: 110px;
+    }
+
+    .spss-icon {
+      width: 55px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- About Section -->
+<section id="about" class="about-section py-5 text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <img src="images/about/my pic.jpg" alt="Your Picture" class="img-fluid rounded-circle">
+      </div>
+      <div class="col-lg-8">
+        <h2 class="display-4">About Me</h2>
+        <p class="lead">Hello! I'm Kokosis Nikolaos, an aspiring data analyst and data scientist passionate about turning complex data into actionable insights.</p>
+        <p>I hold a background in Statistics and Finance, with experience in data analysis, machine learning, and predictive modeling. My goal is to leverage data to solve real-world problems and create value across industries. I’m excited to showcase my work and connect with fellow data enthusiasts!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Button to Toggle Sections -->
+<div class="container text-center mb-5">
+  <button class="btn btn-outline-primary" onclick="showSection('skills')">Skills</button>
+  <button class="btn btn-outline-primary" onclick="showSection('analysisprojects')">Data Analysis Projects</button>
+  <button class="btn btn-outline-primary" onclick="showSection('scienceprojects')">Data Science Projects</button>
+</div>
+
+<!-- Skills Section -->
+<section id="skills" class="skills-section" style="display: none;">
+  <div class="container">
+    <h2 class="text-center mb-5">Skills</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-3 col-sm-6 text-center mb-4">
+        <img src="https://img.icons8.com/?size=100&id=UECmBSgBOvPT&format=png&color=000000" alt="Microsoft Excel" class="img-fluid skill-icon">
+        <h5>Excel</h5>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center mb-4">
+        <img src="https://img.icons8.com/?size=100&id=UFF3hmipmJ2V&format=png&color=000000" alt="SQL" class="img-fluid skill-icon">
+        <h5>SQL</h5>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center mb-4">
+        <img src="https://www.sas.com/en/news/media-gallery/all-images/sas-logo-midnight/_jcr_content/par/image_360101046.img.png" alt="SAS" class="img-fluid skill-icon sas-icon">
+        <h5>SAS</h5>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center mb-4">
+        <img src="https://img.icons8.com/?size=100&id=13441&format=png&color=000000" alt="Python" class="img-fluid skill-icon">
+        <h5>Python</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-3 col-sm-6 text-center mb-4">
+        <img src="https://img.icons8.com/?size=100&id=62903&format=png&color=000000" alt="Machine Learning" class="img-fluid skill-icon">
+        <h5>Machine Learning</h5>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center mb-4">
+        <img src="https://img.icons8.com/?size=100&id=n3QRpDA7KZ7P&format=png&color=000000" alt="TensorFlow" class="img-fluid skill-icon">
+        <h5>TensorFlow</h5>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center mb-4">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Matlab_logo.svg/120px-Matlab_logo.svg.png" alt="MATLAB" class="img-fluid skill-icon">
+        <h5>MATLAB</h5>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center mb-4">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Spss_logo.svg/1920px-Spss_logo.svg.png" alt="SPSS" class="img-fluid skill-icon spss-icon">
+        <h5>SPSS</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JavaScript -->
+<script>
+  function showSection(sectionId) {
+    // Hide all sections
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      section.style.display = 'none';
+    });
+
+    // Show the clicked section
+    document.getElementById(sectionId).style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

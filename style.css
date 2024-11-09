@@ -1,0 +1,422 @@
+/* General Styling for Body */
+body {
+    background: linear-gradient(135deg, #f0f2f5 0%, #d0d7df 100%);
+    color: #333;
+    padding-top: 56px; /* Adjust padding to compensate for fixed navbar */
+    font-family: 'Arial', sans-serif; /* Use a clean, modern font */
+}
+
+/* Header Section Styling */
+header {
+    background: linear-gradient(135deg, #2c3e50, #34495e); /* Gradual blue-gray gradient */
+    color: #fff; /* White text for contrast */
+    padding: 80px 0; /* Add extra padding for spacing above the header */
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow to create depth */
+    /*border-bottom: 5px solid #e74c3c; /* Thin red border for a pop of color */
+}
+
+/* Header Title Styling */
+header h1 {
+    font-size: 3.5em; /* Larger font for the name */
+    font-weight: bold; /* Make the name stand out */
+    margin-bottom: 0.5em; /* Space below the name */
+    letter-spacing: 2px; /* Add spacing between letters for a modern look */
+}
+
+/* Tagline Styling */
+.tagline {
+    font-size: 1.5em; /* Larger font for the tagline */
+    font-weight: 300; /* Lighter weight for the tagline */
+    color: #f39c12; /* Gold color to contrast with the background */
+    margin-top: 1em; /* Add spacing between the title and tagline */
+}
+
+/* Navbar Styling */
+.navbar {
+    background: rgba(0, 0, 0, 0.8); /* Transparent black background for the navbar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Light shadow */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999; /* Ensure navbar stays on top */
+}
+
+.navbar .navbar-brand {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #eaebed; /* Red color for brand */
+}
+
+/* Responsive adjustments for header */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em; /* Adjust font size for smaller screens */
+    }
+
+    .tagline {
+        font-size: 1.2em; /* Smaller font size for the tagline */
+    }
+}
+
+
+/* About Section Styling */
+#about {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #d0d7df 0%, #f0f2f5 100%); /* Gradient background */
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Add a softer shadow */
+    text-align: center;
+    border-radius: 15px;
+}
+
+#about h2 {
+    font-size: 3rem;
+    color: #007bff; /* Custom color for header */
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-transform: uppercase; /* For a more modern feel */
+}
+
+#about p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #555; /* Slightly darker color for text */
+}
+
+#about img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 4px solid #007bff; /* Add a colored border */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow for image */
+    margin-bottom: 25px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#about img:hover {
+    transform: scale(1.05); /* Image zoom effect on hover */
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 25px; /* Rounded button */
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3;
+}
+
+/* Skills Section Styling */
+.skills-section {
+    padding: 20px 0;
+    background: linear-gradient(135deg, #d0d7df 0%, #f0f2f5 100%); /* Light gray background */
+    text-align: center;
+}
+.skills-section .row {
+    display: flex;
+    justify-content: center; /* Center the icons */
+}
+.skills-section .col-md-3 {
+    margin: 1px 0; /* Add spacing between icons */
+}
+.skill-icon {
+    width: 43px; /* Standard size for all skill icons */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Specific larger size for SAS icon */
+.sas-icon {
+    width: 93px; /* Adjust SAS icon size */
+    margin-bottom: 6px;
+}
+/* Specific larger size for SPSS icon */
+.spss-icon {
+    width: 40px; /* Adjust SPSS icon size */
+}
+
+/* Projects Section Styling */
+.projects-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+.card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect for project cards */
+    border-radius: 10px;
+}
+.card-img-top {
+    max-height: 180px;
+    object-fit: cover; /* Crop image to fit card */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #skills h2 {
+        font-size: 2em; /* Adjust title size for mobile */
+    }
+
+    .skill-container {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Adjust grid for smaller screens */
+    }
+
+    .skill i {
+        font-size: 2.5em; /* Smaller icons for mobile */
+    }
+
+    .skill h3 {
+        font-size: 1.2em; /* Smaller skill name for mobile */
+    }
+}
+
+/* Specific Styling for Each Section */
+#about, .skills-section, .projects-section {
+    background: rgba(236, 236, 236, 0.8); 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(170, 42, 42, 0.1);
+    padding: 50px 0;
+    margin: 30px 0;
+}
+
+
+/* Button Styling */
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin: 5px;
+    border-radius: 5px;
+}
+/* Buttons and spacing */
+.btn-outline-primary {
+    border-color: #007bff;
+    color: #007bff;
+    background-color: transparent;
+}
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Project Container Styling */
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid with flexible columns */
+    gap: 30px; /* Space between project cards */
+    justify-items: center; /* Center project cards */
+}
+
+/* Individual Project Card Styling */
+.project-card {
+    background-color: #f9fafb; /* Light background for project cards */
+    border-radius: 10px; /* Rounded corners for the cards */
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    width: 100%; /* Ensure it fills container on small screens */
+    max-width: 350px; /* Max width for larger screens */
+}
+
+/* Hover Effect for Project Cards */
+.project-card:hover {
+    transform: translateY(-10px); /* Slight lift effect on hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+/* Project Title Styling */
+.project-card h3 {
+    font-size: 1.6em; /* Slightly larger title font */
+    font-weight: bold;
+    color: #34495e; /* Darker shade for project title */
+    margin-bottom: 10px; /* Space below title */
+}
+
+/* Project Description Styling */
+.project-card p {
+    font-size: 1em;
+    color: #7f8c8d; /* Light gray for descriptions */
+    line-height: 1.6;
+    margin-bottom: 20px; /* Space below description */
+}
+
+/* Project Links Styling */
+.project-card .project-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between project links */
+}
+
+/* Individual Project Link Styling */
+.project-card .project-links a {
+    font-size: 1.2em;
+    color: #e74c3c; /* Red color for links */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for link hover */
+}
+
+.project-card .project-links a:hover {
+    color: #c0392b; /* Darker red on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #projects h2 {
+        font-size: 2em; /* Adjust title size for mobile */
+    }
+
+    .project-container {
+        grid-template-columns: 1fr; /* Single column layout for small screens */
+    }
+
+    .project-card {
+        padding: 20px; /* Less padding on smaller screens */
+    }
+
+    .project-card h3 {
+        font-size: 1.4em; /* Adjust title size */
+    }
+
+    .project-card p {
+        font-size: 0.9em; /* Adjust description font size */
+    }
+}
+
+
+/* Contact Section Styling */
+.contact-section {
+    background: linear-gradient(135deg, #2c3e50, #34495e); /* Dark background color */
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* Contact Heading */
+.contact-section h2 {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* Contact Information Text */
+.contact-info {
+    font-size: 1.1rem;
+    color: #bbb;
+    margin-top: 5px;
+}
+
+/* Contact Link Styling */
+.contact-link {
+    color: #fff;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #e74c3c; /* Red hover effect */
+}
+
+/* Social Media Icons */
+.social-links {
+    margin-top: 40px;
+}
+
+.social-links a {
+    color: #fff;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #e74c3c; /* Red hover effect */
+}
+
+/* Contact Form */
+.contact-form .form-control {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+/* Increase Message Textarea Size */
+.contact-form textarea.form-control {
+    height: 270px; /* Set a taller height for the message box */
+    resize: vertical; /* Allow users to resize vertically */
+}
+.contact-form .form-control:focus {
+    border-color: #e74c3c;
+    background-color: #444;
+}
+
+.contact-form button {
+    background-color: #e74c3c;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #c0392b;
+}
+
+/* Section headers */
+#about h2, #skills h2, #projects h2 {
+    font-size: 3rem; /* Increase the font size of the headers */
+    color: #007bff;  /* Set a custom color for the headers */
+    font-weight: bold; /* Make the text bold */
+}
+
+/* Background color changes */
+#about {
+    background-color: #e9ecef !important; /* Change background color for About Me section */
+}
+
+#skills {
+    background-color: #e9ecef; /* Change background color for Skills section */
+}
+
+#projects {
+    background-color: #e9ecef; /* Change background color for Data Analysis Projects section */
+}
+
+
+/* Optional: If you want to add some spacing around the header */
+#about h2, #skills h2, #projects h2 {
+    padding-bottom: 20px; /* Add some padding to the bottom of the header */
+}
+
+
+/* Change the overall page background color */
+body {
+    background-color: #f0f0f0; /* Background color for empty space */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    .navbar-collapse {
+        margin-top: 10px;
+    }
+    header h1 {
+        font-size: 2em; /* Smaller font size on mobile */
+    }
+    .tagline {
+        font-size: 1rem; /* Adjust tagline size on mobile */
+    }
+    .col-lg-4, .col-lg-8 {
+        text-align: center; /* Center text in about section on small screens */
+    }
+}
