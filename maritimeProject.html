@@ -1,150 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vessel Trajectory Prediction Project</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    .highlight { font-weight: bold; color: #333; }
-    .accordion-button { background-color: #f8f9fa; }
-    .cta-button { background-color: #007bff; color: white; }
-    .cta-button:hover { background-color: #0056b3; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vessel Trajectory Prediction Project</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #1e3a8a;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+        }
+
+        /* Sections */
+        section {
+            padding: 30px 20px;
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        section p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #1e3a8a;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            footer p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container mt-5">
-    <h1 class="text-center">Vessel Trajectory Prediction Project</h1>
+    <header>
+        <div class="hero">
+            <h1>Vessel Trajectory Prediction in the Saronic Bay</h1>
+            <p>Analyzing and predicting vessel trajectories using AIS data from the University of Piraeus</p>
+        </div>
+    </header>
 
-    <section class="mt-4">
-      <h2>Project Overview</h2>
-      <p>This project focuses on analyzing and predicting vessel trajectories using real-world data collected from the Automatic Identification System (AIS) antenna located at the University of Piraeus. The primary objective is to enhance our understanding of vessel movements in the Saronic Bay area and develop predictive models that can forecast ship trajectories based on historical AIS data. This process is split into five main phases: Database Setup and Data Collection, Data Exploration and Queries, Data Cleaning and Feature Engineering, Model Development, and Model Evaluation.</p>
+    <section id="overview">
+        <h2>Project Overview</h2>
+        <p>This project focuses on analyzing and predicting vessel trajectories using real-world AIS data collected from the University of Piraeus. The primary objective is to enhance our understanding of vessel movements in the Saronic Bay area and develop predictive models that can forecast ship trajectories based on historical AIS data. This process is split into five main phases: Database Setup and Data Collection, Data Exploration and Queries, Data Cleaning and Feature Engineering, Model Development, and Model Evaluation.</p>
     </section>
 
-    <!-- Accordion for Sections -->
-    <div class="accordion" id="projectAccordion">
+    <section id="database">
+        <h2>1. Database Setup and Data Collection</h2>
+        <p>The first step was to establish a spatial database to store the raw AIS data that we would be working with. This database, called thalassaDB, was designed to handle large volumes of vessel data and enable efficient spatial queries for analysis. AIS data, which includes vessel position, speed, course, and timestamp, was collected from the AIS antenna located at the University of Piraeus. The data tracked vessels in the Saronic Bay area, with a focus on passenger vessels, which frequently visited the nearby Piraeus Port.</p>
+        <p>In this phase, we also focused on velocity filtering, ensuring that only vessels in motion were considered for analysis. This step was important because we wanted to eliminate data related to vessels that were stationary or had erroneous GPS readings, ensuring that our analysis would reflect only meaningful, real-time movement data.</p>
+    </section>
 
-      <!-- Section 1: Database Setup and Data Collection -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Section 1: Database Setup and Data Collection
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#projectAccordion">
-          <div class="accordion-body">
-            <p>The first step was to establish a spatial database to store the raw AIS data that we would be working with. This database, called <span class="highlight">thalassaDB</span>, was designed to handle large volumes of vessel data and enable efficient spatial queries for analysis. AIS data, which includes vessel position, speed, course, and timestamp, was collected from the AIS antenna located at the University of Piraeus.</p>
-            <p>In this phase, we also focused on velocity filtering, ensuring that only vessels in motion were considered for analysis. This step was important because we wanted to eliminate data related to stationary vessels or erroneous GPS readings.</p>
-            <p><strong>[An image of the database structure]</strong></p>
-          </div>
-        </div>
-      </div>
+    <section id="data-exploration">
+        <h2>2. Data Exploration and Geospatial Queries</h2>
+        <p>With the data collected and stored in the database, we began exploring it through SQL queries. This phase involved performing basic queries to explore the vessel information, such as:</p>
+        <ul>
+            <li>Vessel ID and names</li>
+            <li>Speed and course of movement</li>
+            <li>Distances between vessels and ports</li>
+            <li>Port entry and exit times</li>
+        </ul>
+        <p>We also began performing geospatial queries to extract insights from the spatial relationship between vessels and ports. For example, using SQL and spatial functions, we could answer questions such as: "Which vessels are currently within a 10 km radius of Piraeus Port?" or "What is the average speed of vessels within a certain distance from the shore?"</p>
+    </section>
 
-      <!-- Section 2: Data Exploration and Geospatial Queries -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Section 2: Data Exploration and Geospatial Queries
-          </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#projectAccordion">
-          <div class="accordion-body">
-            <p>With the data collected and stored in the database, we began exploring it through SQL queries. This phase involved performing basic queries to explore the vessel information, such as:</p>
-            <ul>
-              <li>Vessel ID and names</li>
-              <li>Speed and course of movement</li>
-              <li>Distances between vessels and ports</li>
-              <li>Port entry and exit times</li>
-            </ul>
-            <p>We also manually added additional data like port locations and geometries, and performed geospatial queries to extract insights from spatial relationships between vessels and ports.</p>
-            <p><strong>Example Questions Answered:</strong> "Which vessels are currently within a 10 km radius of Piraeus Port?" or "What is the average speed of vessels within a certain distance from the shore?"</p>
-          </div>
-        </div>
-      </div>
+    <section id="data-cleaning">
+        <h2>3. Data Cleaning and Feature Engineering</h2>
+        <p>Data cleaning was the most complex and critical phase in the project. Since the raw data was prone to errors, inconsistencies, and missing values, it was essential to clean and prepare it before it could be used in the machine learning models. This phase involved:</p>
+        <ol>
+            <li><strong>Temporal and Speed Consistency:</strong> We applied rolling averages to smooth the speed data and filtered out unrealistic speed values.</li>
+            <li><strong>Spatial Cleaning with R-tree Indexing:</strong> We used R-tree spatial indexing to efficiently clean erroneous spatial data points.</li>
+            <li><strong>Feature Engineering:</strong> Vessel statuses were classified based on operational conditions like speed, type, and port associations.</li>
+            <li><strong>Handling Missing Data:</strong> Linear interpolation was used to fill gaps in missing position data.</li>
+        </ol>
+    </section>
 
-      <!-- Section 3: Data Cleaning and Feature Engineering -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Section 3: Data Cleaning and Feature Engineering
-          </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#projectAccordion">
-          <div class="accordion-body">
-            <p>This was the most complex and critical phase, where we addressed errors, inconsistencies, and missing values in the raw AIS data. Key tasks included:</p>
-            <ol>
-              <li><strong>Temporal and Speed Consistency</strong>: We applied rolling averages to smooth the speed data and removed records where the speed exceeded realistic limits for each vessel type.</li>
-              <li><strong>Spatial Cleaning with R-tree Indexing</strong>: Using R-tree indexing, we filtered out erroneous spatial data points (e.g., vessels traveling several hundred kilometers within a single timestamp).</li>
-              <li><strong>Feature Engineering</strong>: Vessel statuses were categorized based on operational conditions like speed and type, and the data was split into trips and trajectories.</li>
-            </ol>
-            <p>We also handled missing data through linear interpolation to ensure continuous vessel trajectories.</p>
-          </div>
-        </div>
-      </div>
+    <section id="model">
+        <h2>4. Model Development</h2>
+        <p>After preparing the data, we focused on building a neural network model capable of predicting vessel trajectories. We chose a Recurrent Neural Network (RNN) architecture, particularly a Long Short-Term Memory (LSTM) network, due to its effectiveness in handling sequential and time-dependent data.</p>
+    </section>
 
-      <!-- Section 4: Mini-Trajectories and Feature Preparation for Neural Network Training -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFour">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-            Section 4: Mini-Trajectories and Feature Preparation for Neural Network Training
-          </button>
-        </h2>
-        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#projectAccordion">
-          <div class="accordion-body">
-            <p>We converted the vessel trajectories into time series data and broke them into mini-trajectories consisting of 14 time steps. This segmentation helped the neural network capture both short-term and long-term vessel movement patterns.</p>
-            <p>We also performed Min-Max normalization on the key features (Longitude and Latitude) to improve model efficiency.</p>
-          </div>
-        </div>
-      </div>
+    <footer>
+        <p>&copy; 2024 Vessel Trajectory Prediction Project | All Rights Reserved</p>
+    </footer>
 
-      <!-- Section 5: Model Development and Training -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFive">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-            Section 5: Model Development and Training
-          </button>
-        </h2>
-        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#projectAccordion">
-          <div class="accordion-body">
-            <p>We developed a Recurrent Neural Network (RNN) using Long Short-Term Memory (LSTM) architecture to predict future vessel positions based on historical data.</p>
-            <p><strong>[Image of the model architecture]</strong></p>
-          </div>
-        </div>
-      </div>
+    <script>
+        // Smooth Scroll Function
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth"
+                });
+            });
+        });
+    </script>
 
-      <!-- Section 6: Model Training and Evaluation -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingSix">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-            Section 6: Model Training and Evaluation
-          </button>
-        </h2>
-        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#projectAccordion">
-          <div class="accordion-body">
-            <p>The model was trained using a dataset of cleaned and preprocessed AIS data. The final model achieved an RMSE of 23.21 meters, demonstrating high accuracy in predicting vessel positions.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Section 7: Conclusion -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingSeven">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-            Section 7: Conclusion
-          </button>
-        </h2>
-        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#projectAccordion">
-          <div class="accordion-body">
-            <p>This project successfully demonstrated the power of combining data cleaning, spatial algorithms, and predictive modeling to analyze and forecast vessel trajectories. The model can be used to improve maritime safety, optimize vessel routing, and enhance decision-making in the maritime industry.</p>
-          </div>
-        </div>
-      </div>
-
-    </div> <!-- End of Accordion -->
-
-  </div> <!-- End of Container -->
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
