@@ -1,197 +1,121 @@
-<style>
-  .about-section {
-    text-align: center;
-    padding: 50px 0;
-  }
-  .about-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  .about-section img {
-    width: 200px; /* Adjust the size as needed */
-    height: 200px;
-    border-radius: 50%; /* Makes the image round */
-    margin-bottom: 20px;
-  }
-  .about-section p {
-    color: #333;
-  }
-
-  /* Additional CSS for Projects Section */
-.projects-section h2 {
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-}
-.card {
-  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds a subtle shadow around the card */
-}
-.card-img-top {
-  max-height: 180px; /* Adjust this value to fit the image properly in the card */
-  object-fit: cover; /* This makes sure the image covers the area properly */
-}
-.card-body {
-  padding: 15px;
-}
-.card-title {
-  font-size: 1.25rem;
-}
-.card-text {
-  margin-bottom: 15px;
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Additional CSS for Skills Section */
-.skills-section h2 {
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-}
-.skills-section .card {
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-.skills-section .card-img-top {
-  padding: 20px; /* Add padding around your images if needed */
-  background-color: #f8f9fa; /* Adjust the background color if your images have transparent areas */
-  height: 180px; /* Fixed height for consistency */
-  object-fit: contain; /* This will make sure the image is scaled properly within the container */
-}
-.skills-section .card-body {
-  padding: 15px;
-}
-.skills-section .card-title {
-  font-size: 1.25rem;
-  margin-bottom: 15px;
-}
-.skills-section .btn-outline-primary {
-  color: #007bff;
-  border-color: #007bff;
-}
-.skills-section .btn-outline-primary:hover {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-/* Additional CSS for Contact Section */
-.contact-section {
-  padding: 50px 0;
-}
-.contact-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-}
-.contact-section p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-.social-icon {
-  width: 50px; /* Size of your icons */
-  margin-bottom: 10px;
-}
-/* Hover effect for icons */
-.social-icon:hover {
-  opacity: 0.7;
-}
-/* Style for links in the Contact section */
-.contact-section a {
-  color: #fff;
-  text-decoration: none; /* Removes underline from links */
-  display: inline-block; /* Allows for margin on the bottom */
-  margin-bottom: 10px;
-}
-.contact-section a:hover {
-  color: #ddd; /* Color when hovering over the link */
-}
-
-/* CSS for Sticky Navbar */
-.navbar {
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adds a shadow for depth */
-}
-
-/* Ensure padding is added to body to avoid content being hidden behind the navbar */
-body { 
-  padding-top: 56px; /* Adjust this value based on the height of your navbar */
-}
-
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Style for navigation bar links */
-.navbar-nav .nav-link {
-  color: white;
-}
-
-.navbar-nav .nav-link:hover {
-  color: #f8f9fa; /* Slightly lighter white when hovering over links */
-}
-
-/* Media query for responsive navbar collapsing */
-@media (max-width: 992px) {
-  .navbar-collapse {
-    background-color: #343a40; /* Same as navbar color for seamless look */
-  }
-}
-
-
-/* General background style for the body */
 body {
-  background: linear-gradient(135deg, #f0f2f5 0%, #d0d7df 100%);
-  color: #333; /* Adjust font color for better readability */
-  padding-top: 56px; /* Keeps spacing consistent with the navbar */
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
 }
 
-/* Specific background styles for sections */
-#about, .skills-section, .projects-section {
-  background: rgba(255, 255, 255, 0.8); /* Light background with transparency */
-  border-radius: 10px; /* Adds rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
-  padding: 50px 0; /* Space within each section */
-  margin: 30px 0; /* Space between each section */
+/* Container */
+.container {
+    width: 80%;
+    margin: 0 auto;
 }
 
-/* Background for the Contact section */
-.contact-section {
-  background: linear-gradient(135deg, #2d2d2d 0%, #404040 100%);
-  color: #f8f9fa;
+/* Header */
+header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 2em 0;
+    text-align: center;
 }
 
-/* Navbar background */
-.navbar {
-  background: rgba(0, 0, 0, 0.8); /* Transparent dark background */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+header h1 {
+    font-size: 2.5em;
 }
 
-/* Style for "About Me" title */
+.tagline {
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    color: #e74c3c;
+}
+
+/* About Section */
+#about {
+    padding: 3em 0;
+    text-align: center;
+}
+
+.profile-pic {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 1em;
+}
+
 #about h2 {
-  font-size: 2.75rem;
-  font-weight: 700;
-  color: #007bff; /* Accent color */
+    font-size: 2em;
+    margin-bottom: 1em;
 }
 
-/* Style for "Skills" and "Projects" section titles */
-.skills-section h2, .projects-section h2 {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #007bff; /* Accent color */
+.btn {
+    background-color: #3498db;
+    color: #fff;
+    padding: 0.7em 1.5em;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 1em;
 }
 
-/* Button styles */
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+/* Projects Section */
+#projects .project {
+    background: #ecf0f1;
+    padding: 1.5em;
+    margin: 1em 0;
+    border-radius: 5px;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+#projects h2, #skills h2, #contact h2 {
+    text-align: center;
+    margin: 2em 0 1em;
 }
 
-/* Skill icon adjustments */
-.skill-icon {
-  width: 60px;
-  height: auto;
-  margin-bottom: 10px;
+/* Skills Section */
+#skills ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
 }
 
+#skills li {
+    background-color: #3498db;
+    color: #fff;
+    padding: 0.5em 1em;
+    border-radius: 3px;
+}
 
-</style>
+/* Contact Section */
+#contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#contact label {
+    margin-top: 1em;
+}
+
+#contact input, #contact textarea {
+    padding: 0.5em;
+    margin-top: 0.5em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#contact button {
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 0.7em;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1em;
+    cursor: pointer;
+}
