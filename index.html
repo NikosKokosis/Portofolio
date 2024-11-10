@@ -12,6 +12,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href="myPortofolio/style.css">
 
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
 
 </head>
 <body>
@@ -64,8 +67,8 @@
             </div>
             <div class="col-lg-8">
                 <h2>About Me</h2>
-                <p class="lead">Hello! I'm Kokosis Nikolaos, an aspiring data analyst and data scientist passionate about turning complex data into actionable insights.</p>
-                <p>I hold a background in Statistics and Finance, with experience in data analysis, machine learning, and predictive modeling. My goal is to leverage data to solve real-world problems and create value across industries. I’m excited to showcase my work and connect with fellow data enthusiasts!</p>
+                <p class="lead">Hi! I'm Nikolaos Kokosis, a data analyst and data scientist with a passion for transforming complex data into meaningful insights.</p>
+                <p>Having completed my MSc in Cybersecurity & Data Science, I bring hands-on experience in data analysis, machine learning and predictive modeling. My goal is to leverage data to solve real-world problems and create value across industries. I’m excited to showcase my work and connect with fellow data enthusiasts!</p>
                 <a href="myPortofolio/CV-Nikos-Kokosis.pdf" target="_blank" class="btn btn-primary mt-4"> View Resume <i class="fab fa-google-drive ml-2"></i></a>
             </div>
         </div>
@@ -217,19 +220,19 @@
     </div>
 </section>
 
-<!-- Contact Form -->
+<!-- Contact Form Section -->
 <section id="contact" class="contact-section text-center text-white bg-dark py-5">
     <div class="container">
         <h2>Contact Me</h2>
-        <!-- Social Media Icons (Optional) -->
+        <!-- Social Media Icons -->
         <div class="social-links">
             <a href="mailto:nikos.kokoshs97@gmail.com" class="contact-link"><i class="fas fa-envelope fa-2x"></i></a>
             <a href="https://www.linkedin.com/in/nikos-kokosis/" class="contact-link"><i class="fab fa-linkedin fa-2x"></i></a>
             <a href="https://github.com/NikosKokosis" class="contact-link"><i class="fab fa-github fa-2x"></i></a>
         </div>
-        <!-- Contact Form (Updated for mailto) -->
+        <!-- Contact Form -->
         <div class="contact-form mt-5">
-            <form action="mailto:nikos.kokoshs97@gmail.com" method="POST" enctype="text/plain">
+            <form id="contact-form">
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
@@ -248,10 +251,12 @@
 </section>
 
 
+
 <!-- Footer -->
 <footer class="bg-dark text-white text-center py-4">
-    <p>&copy; 2024 Nikolaos Kokosis. All Rights Reserved.</p>
+    <p>&copy; 2024 <strong>Nikolaos Kokosis</strong> - All Rights Reserved</p>
 </footer>
+
 
 
 <!-- JavaScript -->
