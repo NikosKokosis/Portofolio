@@ -1,0 +1,201 @@
+/* Reset and basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+      font-family: 'Arial', sans-serif;
+      background-image: url('https://marlink.com/_Resources/Persistent/f/0/3/d/f03daa74ffa57f8a50cfd25000f7c7a4c155b1b6/blog%203-1727x910-1440x759.webp');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed; /* Parallax effect */
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Text shadow for contrast */
+      min-height: 100vh; /* Makes sure the body is at least the full height of the viewport */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 10px;
+      padding-bottom: 100px; /* Adds extra space at the bottom */
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    padding: 70px 20px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+  
+  p {
+    font-size: 1.49rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #fff;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* Project Overview Section */
+  #overview {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+    margin: 40px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    color: #1e2a47;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .overview-text {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #1f1f1f;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  /* Phase Section */
+  #phases {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px; /* Increased gap for better readability */
+  }
+  
+  .phase {
+    background-color: rgba(255, 255, 255, 0.8); /* Lighter background for clarity */
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    text-align: left;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    font-size: 1.1rem; /* Slightly larger font for better readability */
+  }
+  
+  .phase:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 1); /* Light background on hover */
+  }
+  
+  .phase h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #1e2a47;
+    font-weight: bold;
+    text-transform: uppercase; /* Makes the title stand out more */
+    letter-spacing: 1px; /* Adds some spacing between letters */
+  }
+  
+  .phase p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #1f1f1f;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  /* Accordion styles */
+  .accordion {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .accordion:hover {
+    background-color: #280f7b;
+    color: white;
+  }
+  
+  .accordion:after {
+    content: '\002B'; /* "+" symbol */
+    font-size: 20px;
+    color: #777;
+    float: right;
+  }
+  
+  .active:after {
+    content: '\2212'; /* "-" symbol */
+  }
+  
+  .panel {
+    padding: 0 18px;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    overflow: hidden;
+    margin-top: 10px;
+    border-radius: 5px;
+    max-height: 0; /* Initially collapsed */
+    transition: max-height 0.3s ease-out;
+  }
+  
+  .panel img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  /* Style for all images */
+  .responsive {
+    width: 100%; /* Ensures the images scale to their container's width */
+    max-width: 500px; /* Limits the maximum size of the images */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 8px; /* Optional: adds rounded corners to the images */
+    margin: 10px 0; /* Adds some spacing around the images */
+  }
+  
+  /* Zoom-in effect for specific images */
+  .zoomable {
+    transition: transform 0.3s ease; /* Smooth transition effect */
+    cursor: pointer; /* Indicates the image can be interacted with */
+  }
+  
+  .zoomable:hover {
+    transform: scale(1.2); /* Scales the image by 1.2x on hover */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 2.5rem;
+    }
+  
+    .hero-section p {
+      font-size: 1.2rem;
+    }
+  }  

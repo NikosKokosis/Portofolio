@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vessel Trajectory Prediction</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- For Icons -->
+  <link rel="stylesheet" href="vesselstyle.css">
+
+
+
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1>Vessel Trajectory Prediction Project</h1>
+    <p>Analyzing vessel movements in the Saronic Bay with real AIS data</p>
+  </div>
+
+  <!-- Project Overview Section -->
+  <section id="overview">
+    <h2>Project Overview</h2>
+    <p class="overview-text">This project focuses on analyzing and predicting vessel trajectories using real-world data collected from the Automatic Identification System (AIS) antenna located at the University of Piraeus. The primary objective is to enhance our understanding of vessel movements in the Saronic Bay area and develop predictive models that can forecast ship trajectories based on historical AIS data.</p>
+  </section>
+
+  <!-- Project Phases Section -->
+  <section id="phases">
+    
+    <div class="phase">
+        <h3>Database Setup & Data Collection</h3>
+        <p>Establish a spatial database called <strong>thalassaDB</strong> to store raw AIS data. The data tracked vessels in the Saronic Bay area, focusing on passenger vessels visiting Piraeus Port. The AIS data includes vessel IDs, locations, timestamps, speed, and other movement details, making it ideal for trajectory prediction.</p>
+        <button class="accordion">View Details</button>
+        <div class="panel">
+          <ul>
+            <li><strong>Data Collection:</strong> Collected AIS data using the University of Piraeus’ AIS antenna.</li>
+            <img src="../images/projects/vessels/Screenshot_1.jpg" alt="Vessel Data Screenshot" class="responsive zoomable">
+            <li><strong>Database Design:</strong> Designed the database schema using PostgreSQL with PostGIS extension.</li>
+            <img src="../images/projects/vessels/image.png" alt="Database Structure" class="responsive zoomable">
+            <li><strong>Data Filtering:</strong> Filtered out irrelevant data to focus on vessels in motion.</li>
+          </ul>
+        </div>
+    </div>      
+
+    <div class="phase">
+      <h3>Data Exploration & Geospatial Queries</h3>
+      <p>After the data was collected and stored in the database, conducted a detailed exploration using SQL queries to extract key vessel information, such as vessel IDs, speed, course, and distances between vessels and ports. This phase was critical in identifying trends and relationships within the data.</p>
+      <button class="accordion">View Details</button>
+      <div class="panel">
+        <ul>
+          <li><strong>Port Geospatial Data Integration:</strong> Enhanced the database with port locations and geometries to allow for spatial analysis. Discovered some AIS data points that have inconsistencies.</li>
+          <img src="../images/projects/vessels/Gsis_missData.jpg" alt="Geospatial Data" class="responsive zoomable">
+          <li><strong>Spatial Queries:</strong> Used spatial queries to identify vessels within a specific distance from Piraeus Port, such as "Which vessels are within 0.5 nautical miles of Piraeus Port?"</li><br>
+          <li><strong>Spatiotemporal Queries:</strong> Unique pairs with a time difference between them of less than 30 seconds.</li>
+          <img src="../images/projects/vessels/spatiotemporal.jpg" alt="Spatial Query Results" class="responsive zoomable">
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <h3>Data Cleaning & Feature Engineering</h3>
+      <p>Cleaned the raw AIS data to address missing values, outliers, and timestamp issues. Then, new features were engineered for create vessel trips and trajectories.</p>
+      <button class="accordion">View Details</button>
+      <div class="panel">
+        <ul>
+          <li><strong>Temporal and Speed Consistency:</strong> The initial step focused on ensuring that the dataset maintained consistent temporal and speed values. Sudden fluctuations in speed were often indicative of GPS errors, so rolling averages were applied to smooth out these values. Records with speeds exceeding the maximum allowable limits for each vessel type were filtered out to maintain realistic behavior.</li><br>
+          <li><strong>Spatial Cleaning with R-tree Indexing:</strong> To ensure the spatial accuracy of vessel positions, R-tree spatial indexing was employed. This technique helped filter out erroneous data points, such as instances where a vessel appeared to travel unrealistic distances in a single timestamp. Spatial joins with port locations were also performed to confirm that vessels were appropriately located near ports when expected.</li><br>
+          <li><strong>Feature Engineering Based on Vessel Status Classification:</strong> The dataset was enriched by categorizing vessel statuses (e.g., at anchor, underway using engine, engaged in fishing) based on operational conditions. This classification was determined using vessel speed, type, and port associations. The data was then divided into trips and trajectories, with trips defined by key status changes and trajectories tracking movements between these changes.</li><br>
+          <li><strong>Handling Missing Data & Converting Trajectories:</strong> After cleaning the data and trajectories creation, we encountered missing positions in the AIS dataset, which were common in areas with weak GPS signals or due to transmission errors. To address this, we used linear interpolation to fill in the gaps between existing data points. This process ensured that vessel trajectories were continuous and accurately represented. By performing interpolation at 30-second intervals, we created a uniform dataset that could be effectively used for model training. This step effectively transformed each vessel's trajectory into a time series format, where data points were organized chronologically.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <h3>Model Development</h3>
+      <p>Developed machine learning models, including Bi-GRU, a type of Bidirectional Recurrent Neural Network (RNN), to predict vessel trajectories. The performance metric were evaluate the model is the RMSE.</p>
+      <button class="accordion">View Details</button>
+      <div class="panel">
+        <ul>
+          <li><strong>Model Architecture:</strong></li>
+          <img src="../images/projects/vessels/model_arch.jpg" alt="model arch" class="responsive zoomable">
+          <li><strong>Bi-GRU Neural Networks:</strong> The model was designed to process input sequences of vessel positions (longitude and latitude) along with features like distance from the previous signal and course direction. We used sliding windows of 14 time steps, enabling the model to learn from both past and future vessel movements.</li><br>
+          <li><strong>Model Tuning:</strong> Hyperparameters were optimized and includes a learning rate scheduler to improve accuracy.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <h3>Model Evaluation</h3>
+      <p>Train and Evaluated model performance using real-world AIS data, comparing the predicted trajectories with actual vessel locations to assess prediction accuracy.</p>
+      <button class="accordion">View Details</button>
+      <div class="panel">
+        <ul>
+          <li><strong>Traning Model:</strong> The model was trained with a batch size of 16 for 95 epochs.The model minimize the validation loss and training loss and stop before starts overfitting.</li>
+          <img src="../images/projects/vessels/Train epoch Results.png" alt="Train epoch Results" class="responsive zoomable">
+          <li><strong>Performance Metrics:</strong> The model achieved an RMSE of 23.21 meters, indicating that, on average, the predicted vessel positions were within 23.21 meters of the true positions.</li><br>
+          <li><strong>Location Prediction:</strong> Predicted vessel locations (red point) and compared them with actual data (blue point).</li>
+          <img src="../images/projects/vessels/loc_pred.jpg" alt="loc pred" class="responsive zoomable">
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Project Overview Section -->
+  <section id="overview">
+    <h2>Conclusion</h2>
+    <p class="overview-text">This project demonstrated the effective integration of data cleaning, spatial algorithms, and advanced predictive modeling to analyze and forecast vessel trajectories. By processing real AIS data, we developed a robust model that accurately predicts future vessel positions. The results highlight the potential of machine learning to enhance maritime navigation safety and efficiency, opening the door for further research and applications in maritime analytics.</p>
+  </section>
+
+
+  <script src="vesselscript.js"></script>
+  
+</body>
+</html>
