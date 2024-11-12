@@ -40,4 +40,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
        alert("Failed to send message. Please try again later.");
     });
  });
- 
