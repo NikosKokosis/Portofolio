@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Airbnb Price Analysis in Berlin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Airbnb Price Analysis in Berlin</h1>
+    <p>Insights into Airbnb listings, room types, host types, and trends in Berlin</p>
+  </header>
+
+  <!-- Import Libraries Section -->
+  <section>
+    <h2>Import Libraries and Load Datasets</h2>
+    <p>We begin by importing the necessary libraries for analysis and loading the Airbnb data for Berlin. This data can provide insights into various aspects of Airbnb listings in the city. You can view the dataset and schema documentation at:</p>
+    <ul>
+      <li><a href="http://insideairbnb.com/get-the-data/" target="_blank">Inside Airbnb Dataset Link</a></li>
+      <li><a href="https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit#gid=1322284596" target="_blank">Schema Documentation</a></li>
+    </ul>
+    <p>For this analysis, we focus on the 'listings' DataFrame, as the 'reviews' DataFrame does not provide columns significantly impacting our analysis.</p>
+  </section>
+
+  <!-- Price and Room Type Comparison by Last Review Date Section -->
+  <section>
+    <h2>Price and Room Type Analysis by Last Review Date</h2>
+    <p>In analyzing price trends across different room types, the "price" column is converted from an object to a numeric type and adjusted from dollars to euros for accuracy. Additionally, we transform "last_review" to a datetime format and treat "room_type" as a categorical variable.</p>
+    <p><strong>Visualization:</strong> A scatter plot of room prices over time reveals trends influenced by events, such as the COVID-19 pandemic. This plot helps to capture shifts in demand and pricing patterns in the Berlin Airbnb market.</p>
+    <p>The room type distribution in the dataset includes:</p>
+    <ul>
+      <li>Entire home/apt: 7794</li>
+      <li>Private room: 3993</li>
+      <li>Shared room: 146</li>
+      <li>Hotel room: 116</li>
+    </ul>
+  </section>
+
+  <!-- Room Type Distribution Section -->
+  <section>
+    <h2>Distribution of Room Types</h2>
+    <p>The distribution of room types provides insights into which types of accommodation are most available in Berlin.</p>
+    <p><strong>Visualization:</strong> This data is visualized in the form of a pie chart, illustrating the preferences of travelers in Berlin. Entire homes/apartments constitute the majority of available listings, with private rooms as the next largest category.</p>
+    <ul>
+      <li>Entire home/apt: 6292</li>
+      <li>Private room: 3240</li>
+      <li>Shared room: 119</li>
+      <li>Hotel room: 107</li>
+    </ul>
+  </section>
+
+  <!-- Host Type and Listing Availability Days Section -->
+  <section>
+    <h2>Host Type and Listing Availability</h2>
+    <p>By examining host types and listing availability, we can better understand how different hosts manage their properties.</p>
+    <p><strong>Visualization:</strong> A histogram displays the differences in availability days between Superhosts and Not Superhosts. Superhosts generally have fewer availability days, potentially indicating higher demand for their properties.</p>
+  </section>
+
+  <!-- Exquisite Listings: Best Rooms and Hosts Section -->
+  <section>
+    <h2>Top-rated Listings and Hosts</h2>
+    <p>We calculated a "total_rate" column to identify top-rated listings, focusing on hosts with more than 500 reviews and a minimum of 10 reviews per month.</p>
+    <p><strong>Visualization:</strong> A bar chart highlights these top-rated listings, such as Numa | Nook and Stayery, which consistently receive high reviews and ratings. This analysis showcases the most popular and best-reviewed listings in Berlin.</p>
+  </section>
+
+  <!-- Price Trends for Nena and Numa Section -->
+  <section>
+    <h2>Price Trends for Nena and Numa</h2>
+    <p>The analysis extends to studying future price trends for prominent hosts Nena and Numa.</p>
+    <p><strong>Visualization:</strong> A line graph illustrates seasonal and event-driven price fluctuations for these hosts. This helps us understand how demand influences pricing during peak times, as seen in both general trends and specific spikes during holiday seasons or festivals in Berlin.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>To explore more of my projects, visit <a href="https://nikoskokosis.github.io/Portofolio" target="_blank">my portfolio</a>.</p>
+  </footer>
+</body>
+</html>

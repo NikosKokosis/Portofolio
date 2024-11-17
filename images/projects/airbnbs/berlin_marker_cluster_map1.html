@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_231bc49513a7b17ff682f46213d2bdbf {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_231bc49513a7b17ff682f46213d2bdbf" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_231bc49513a7b17ff682f46213d2bdbf = L.map(
+                "map_231bc49513a7b17ff682f46213d2bdbf",
+                {
+                    center: [52.50947423789563, 13.403401360132625],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4e3d378bc9d1b2d79654e7fcbd8ee9fe = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_231bc49513a7b17ff682f46213d2bdbf);
+        
+    
+            var marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6 = L.markerClusterGroup(
+                {}
+            );
+            map_231bc49513a7b17ff682f46213d2bdbf.addLayer(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+            var marker_0c86c7e7531d1a06fbaad052a26d3f79 = L.marker(
+                [52.51253, 13.41286],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_5690ff3019c1632916ceffa0fc78bdc5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3d276db2e0ae36f6008d0315c65aa650 = $(`<div id="html_3d276db2e0ae36f6008d0315c65aa650" style="width: 100.0%; height: 100.0%;">Nena Apartments Metropolpark Berlin <br> 135.0€</div>`)[0];
+                popup_5690ff3019c1632916ceffa0fc78bdc5.setContent(html_3d276db2e0ae36f6008d0315c65aa650);
+            
+        
+
+        marker_0c86c7e7531d1a06fbaad052a26d3f79.bindPopup(popup_5690ff3019c1632916ceffa0fc78bdc5)
+        ;
+
+        
+    
+    
+            var marker_4ac4c9f02b88fa256c641df750f7dc21 = L.marker(
+                [52.51253, 13.41286],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_3e8a0e3425f1be9c3b22f05a319160ae = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_696a77ef263680e521f804f78ee7ed02 = $(`<div id="html_696a77ef263680e521f804f78ee7ed02" style="width: 100.0%; height: 100.0%;">Nena Apartments Metropolpark Berlin <br> 104.0€</div>`)[0];
+                popup_3e8a0e3425f1be9c3b22f05a319160ae.setContent(html_696a77ef263680e521f804f78ee7ed02);
+            
+        
+
+        marker_4ac4c9f02b88fa256c641df750f7dc21.bindPopup(popup_3e8a0e3425f1be9c3b22f05a319160ae)
+        ;
+
+        
+    
+    
+            var marker_756bf3c85d0a15727d1698f562de715a = L.marker(
+                [52.495548248291016, 13.396210670471191],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_bab229a550a3a3aec396c026d89e7138 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ed77089e52050ab3f5fa5945cd2132ee = $(`<div id="html_ed77089e52050ab3f5fa5945cd2132ee" style="width: 100.0%; height: 100.0%;">Nena Apartments Kreuzberg 61 <br> 107.0€</div>`)[0];
+                popup_bab229a550a3a3aec396c026d89e7138.setContent(html_ed77089e52050ab3f5fa5945cd2132ee);
+            
+        
+
+        marker_756bf3c85d0a15727d1698f562de715a.bindPopup(popup_bab229a550a3a3aec396c026d89e7138)
+        ;
+
+        
+    
+    
+            var marker_311a7619d994ac12e8350b2575e78afb = L.marker(
+                [52.495548248291016, 13.396210670471191],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_fca380e6545a7738febe3b7a55334229 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ba59a573dd803708468bc85139e4b59b = $(`<div id="html_ba59a573dd803708468bc85139e4b59b" style="width: 100.0%; height: 100.0%;">Nena Apartments Kreuzberg 61 <br> 99.0€</div>`)[0];
+                popup_fca380e6545a7738febe3b7a55334229.setContent(html_ba59a573dd803708468bc85139e4b59b);
+            
+        
+
+        marker_311a7619d994ac12e8350b2575e78afb.bindPopup(popup_fca380e6545a7738febe3b7a55334229)
+        ;
+
+        
+    
+    
+            var marker_a6a69336b191e7ce13279dcc5fc38cb6 = L.marker(
+                [52.495548248291016, 13.396210670471191],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_9a0c611836e2a54f91aa831264734de8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a7f3d1edfb9bfaad5366d376808c92bb = $(`<div id="html_a7f3d1edfb9bfaad5366d376808c92bb" style="width: 100.0%; height: 100.0%;">Nena Apartments Kreuzberg 61 <br> 135.0€</div>`)[0];
+                popup_9a0c611836e2a54f91aa831264734de8.setContent(html_a7f3d1edfb9bfaad5366d376808c92bb);
+            
+        
+
+        marker_a6a69336b191e7ce13279dcc5fc38cb6.bindPopup(popup_9a0c611836e2a54f91aa831264734de8)
+        ;
+
+        
+    
+    
+            var marker_66144cf1318e1eba09cf77727d5c3814 = L.marker(
+                [52.52391, 13.39975],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_bdfeb6ce2bcc2c731b716c1651510615 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d9f40b9a74c18e0847fd615ee6d7be3a = $(`<div id="html_d9f40b9a74c18e0847fd615ee6d7be3a" style="width: 100.0%; height: 100.0%;">Numa | Nook <br> 109.0€</div>`)[0];
+                popup_bdfeb6ce2bcc2c731b716c1651510615.setContent(html_d9f40b9a74c18e0847fd615ee6d7be3a);
+            
+        
+
+        marker_66144cf1318e1eba09cf77727d5c3814.bindPopup(popup_bdfeb6ce2bcc2c731b716c1651510615)
+        ;
+
+        
+    
+    
+            var marker_b45d443cd8f525699b0f325f3823abac = L.marker(
+                [52.52391, 13.39975],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_58ee32015d6fdaf4a98ba53d7a67b353 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4e0439de010b7f0c3588a8c3485ffe72 = $(`<div id="html_4e0439de010b7f0c3588a8c3485ffe72" style="width: 100.0%; height: 100.0%;">Numa | Nook <br> 141.0€</div>`)[0];
+                popup_58ee32015d6fdaf4a98ba53d7a67b353.setContent(html_4e0439de010b7f0c3588a8c3485ffe72);
+            
+        
+
+        marker_b45d443cd8f525699b0f325f3823abac.bindPopup(popup_58ee32015d6fdaf4a98ba53d7a67b353)
+        ;
+
+        
+    
+    
+            var marker_589cc15c2e70235f769f9b13b2d7fb66 = L.marker(
+                [52.52391, 13.39975],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_cb10a7739410669ae49f2c4d8c9d3c6e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_744aff47495d0fd2a5fa1fa1a5e720e0 = $(`<div id="html_744aff47495d0fd2a5fa1fa1a5e720e0" style="width: 100.0%; height: 100.0%;">Numa | Nook <br> 105.0€</div>`)[0];
+                popup_cb10a7739410669ae49f2c4d8c9d3c6e.setContent(html_744aff47495d0fd2a5fa1fa1a5e720e0);
+            
+        
+
+        marker_589cc15c2e70235f769f9b13b2d7fb66.bindPopup(popup_cb10a7739410669ae49f2c4d8c9d3c6e)
+        ;
+
+        
+    
+    
+            var marker_e996a23c77abe22f4549786093e8aed9 = L.marker(
+                [52.52391, 13.39975],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_f0dbcf1fcb4dee67f9aa58e855699e1e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fdcfa14df6f4cd473ef01376a2689153 = $(`<div id="html_fdcfa14df6f4cd473ef01376a2689153" style="width: 100.0%; height: 100.0%;">Numa | Nook <br> 159.0€</div>`)[0];
+                popup_f0dbcf1fcb4dee67f9aa58e855699e1e.setContent(html_fdcfa14df6f4cd473ef01376a2689153);
+            
+        
+
+        marker_e996a23c77abe22f4549786093e8aed9.bindPopup(popup_f0dbcf1fcb4dee67f9aa58e855699e1e)
+        ;
+
+        
+    
+    
+            var marker_12b658542c4dd28e96106a17a6de3f5e = L.marker(
+                [52.523911, 13.399752],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_61f3bee05a131fc97565b451f4ddcd7c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e8fa5ac881c07817d489817f88157017 = $(`<div id="html_e8fa5ac881c07817d489817f88157017" style="width: 100.0%; height: 100.0%;">Numa | Nook <br> 272.0€</div>`)[0];
+                popup_61f3bee05a131fc97565b451f4ddcd7c.setContent(html_e8fa5ac881c07817d489817f88157017);
+            
+        
+
+        marker_12b658542c4dd28e96106a17a6de3f5e.bindPopup(popup_61f3bee05a131fc97565b451f4ddcd7c)
+        ;
+
+        
+    
+    
+            var marker_8b46d723119e25bf7b308cd8646152fa = L.marker(
+                [52.51177, 13.4559],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_68ea06533fad5a7e3fda0e37105b2873 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f08c3a5dc1b46a0ad52bfa5198c7a9b7 = $(`<div id="html_f08c3a5dc1b46a0ad52bfa5198c7a9b7" style="width: 100.0%; height: 100.0%;">Numa | Sketch <br> 72.0€</div>`)[0];
+                popup_68ea06533fad5a7e3fda0e37105b2873.setContent(html_f08c3a5dc1b46a0ad52bfa5198c7a9b7);
+            
+        
+
+        marker_8b46d723119e25bf7b308cd8646152fa.bindPopup(popup_68ea06533fad5a7e3fda0e37105b2873)
+        ;
+
+        
+    
+    
+            var marker_ade6586303cf854a735ee412fb2314f4 = L.marker(
+                [52.51177, 13.4559],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_2fc9835a68d7f4c077f9b0280a94b91b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a21b3c7a3ec1c10ed89eda44ec4dac6e = $(`<div id="html_a21b3c7a3ec1c10ed89eda44ec4dac6e" style="width: 100.0%; height: 100.0%;">Numa | Sketch <br> 72.0€</div>`)[0];
+                popup_2fc9835a68d7f4c077f9b0280a94b91b.setContent(html_a21b3c7a3ec1c10ed89eda44ec4dac6e);
+            
+        
+
+        marker_ade6586303cf854a735ee412fb2314f4.bindPopup(popup_2fc9835a68d7f4c077f9b0280a94b91b)
+        ;
+
+        
+    
+    
+            var marker_3228c8431150097d87c5dafdbd889234 = L.marker(
+                [52.51177, 13.4559],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_f2b46a4de1d2e00436d79dee6d575504 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_312e2e8f1ee313d5169c787197487b15 = $(`<div id="html_312e2e8f1ee313d5169c787197487b15" style="width: 100.0%; height: 100.0%;">Numa | Sketch <br> 81.0€</div>`)[0];
+                popup_f2b46a4de1d2e00436d79dee6d575504.setContent(html_312e2e8f1ee313d5169c787197487b15);
+            
+        
+
+        marker_3228c8431150097d87c5dafdbd889234.bindPopup(popup_f2b46a4de1d2e00436d79dee6d575504)
+        ;
+
+        
+    
+    
+            var marker_7ebf9e777f7aaf5bb856b7a0836aa209 = L.marker(
+                [52.51177, 13.4559],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_45d083067cbf7c852c9f3a0387961480 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1cc0ea7747563bdecc0546eba404b512 = $(`<div id="html_1cc0ea7747563bdecc0546eba404b512" style="width: 100.0%; height: 100.0%;">Numa | Sketch <br> 122.0€</div>`)[0];
+                popup_45d083067cbf7c852c9f3a0387961480.setContent(html_1cc0ea7747563bdecc0546eba404b512);
+            
+        
+
+        marker_7ebf9e777f7aaf5bb856b7a0836aa209.bindPopup(popup_45d083067cbf7c852c9f3a0387961480)
+        ;
+
+        
+    
+    
+            var marker_0315eb64f611e47d8784c56e57b3c356 = L.marker(
+                [52.51177, 13.4559],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_06593f5f5126add13538a467b7bfc47b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d099e825044cbc7d9db8d53407686b59 = $(`<div id="html_d099e825044cbc7d9db8d53407686b59" style="width: 100.0%; height: 100.0%;">Numa | Sketch <br> 135.0€</div>`)[0];
+                popup_06593f5f5126add13538a467b7bfc47b.setContent(html_d099e825044cbc7d9db8d53407686b59);
+            
+        
+
+        marker_0315eb64f611e47d8784c56e57b3c356.bindPopup(popup_06593f5f5126add13538a467b7bfc47b)
+        ;
+
+        
+    
+    
+            var marker_0999cb6185c9d9348c3d83801526b7b3 = L.marker(
+                [52.5002, 13.35273],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_46a65e7275a0cb2328d4bd471c1c6018 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e91ab750971abf029bbeace40e4aeb8d = $(`<div id="html_e91ab750971abf029bbeace40e4aeb8d" style="width: 100.0%; height: 100.0%;">Numa | Drift (Ex. Gaijin) <br> 99.0€</div>`)[0];
+                popup_46a65e7275a0cb2328d4bd471c1c6018.setContent(html_e91ab750971abf029bbeace40e4aeb8d);
+            
+        
+
+        marker_0999cb6185c9d9348c3d83801526b7b3.bindPopup(popup_46a65e7275a0cb2328d4bd471c1c6018)
+        ;
+
+        
+    
+    
+            var marker_18e7c0b90cb2a88d7bc36668315ac3a6 = L.marker(
+                [52.5002, 13.35273],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_6e7ff82f8dd67337867931f86680ba24 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cbefba0452d926e3f4a58c3a142d98cc = $(`<div id="html_cbefba0452d926e3f4a58c3a142d98cc" style="width: 100.0%; height: 100.0%;">Numa | Drift (Ex. Gaijin) <br> 118.0€</div>`)[0];
+                popup_6e7ff82f8dd67337867931f86680ba24.setContent(html_cbefba0452d926e3f4a58c3a142d98cc);
+            
+        
+
+        marker_18e7c0b90cb2a88d7bc36668315ac3a6.bindPopup(popup_6e7ff82f8dd67337867931f86680ba24)
+        ;
+
+        
+    
+    
+            var marker_fabb4822db98f151a5bbfcbf6759065e = L.marker(
+                [52.5002, 13.35273],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_40fca25e480fbbf49e5796e3105bcb34 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2f5729a97c71fedf6ab042997fb9a499 = $(`<div id="html_2f5729a97c71fedf6ab042997fb9a499" style="width: 100.0%; height: 100.0%;">Numa | Drift (Ex. Gaijin) <br> 121.0€</div>`)[0];
+                popup_40fca25e480fbbf49e5796e3105bcb34.setContent(html_2f5729a97c71fedf6ab042997fb9a499);
+            
+        
+
+        marker_fabb4822db98f151a5bbfcbf6759065e.bindPopup(popup_40fca25e480fbbf49e5796e3105bcb34)
+        ;
+
+        
+    
+    
+            var marker_e3cb87535efe1dfdaeab7a4f6f6679e9 = L.marker(
+                [52.5002, 13.35273],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_f627e2ec0ba19390571f871f5f83eb14 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ce71725aa23e954005768e59b69e4f66 = $(`<div id="html_ce71725aa23e954005768e59b69e4f66" style="width: 100.0%; height: 100.0%;">Numa | Drift (Ex. Gaijin) <br> 110.0€</div>`)[0];
+                popup_f627e2ec0ba19390571f871f5f83eb14.setContent(html_ce71725aa23e954005768e59b69e4f66);
+            
+        
+
+        marker_e3cb87535efe1dfdaeab7a4f6f6679e9.bindPopup(popup_f627e2ec0ba19390571f871f5f83eb14)
+        ;
+
+        
+    
+    
+            var marker_964a726b894dafc09dc8ed7ba3627d89 = L.marker(
+                [52.5002, 13.35273],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_51527f776a9bec3ee1f106cda05e24ea = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c72bcf9e6d4e291e77dfceb998a7cea3 = $(`<div id="html_c72bcf9e6d4e291e77dfceb998a7cea3" style="width: 100.0%; height: 100.0%;">Numa | Drift (Ex. Gaijin) <br> 130.0€</div>`)[0];
+                popup_51527f776a9bec3ee1f106cda05e24ea.setContent(html_c72bcf9e6d4e291e77dfceb998a7cea3);
+            
+        
+
+        marker_964a726b894dafc09dc8ed7ba3627d89.bindPopup(popup_51527f776a9bec3ee1f106cda05e24ea)
+        ;
+
+        
+    
+    
+            var marker_258c303b7a5c1f852ea23a962f61e449 = L.marker(
+                [52.5002, 13.35273],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_f838273b8452a3f5c26ca0bf26ca01ab = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_45a2929684bfe8bfdf77d391faf73631 = $(`<div id="html_45a2929684bfe8bfdf77d391faf73631" style="width: 100.0%; height: 100.0%;">Numa | Drift (Ex. Gaijin) <br> 150.0€</div>`)[0];
+                popup_f838273b8452a3f5c26ca0bf26ca01ab.setContent(html_45a2929684bfe8bfdf77d391faf73631);
+            
+        
+
+        marker_258c303b7a5c1f852ea23a962f61e449.bindPopup(popup_f838273b8452a3f5c26ca0bf26ca01ab)
+        ;
+
+        
+    
+    
+            var marker_9c2579352039a25faf966d13ec307093 = L.marker(
+                [52.5002, 13.35273],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_96f8d3ed09ae713a6ce98d3a6680e79b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8cadaa426b8d04c7d0c1a9eab5d23138 = $(`<div id="html_8cadaa426b8d04c7d0c1a9eab5d23138" style="width: 100.0%; height: 100.0%;">Numa | Drift (Ex. Gaijin) <br> 185.0€</div>`)[0];
+                popup_96f8d3ed09ae713a6ce98d3a6680e79b.setContent(html_8cadaa426b8d04c7d0c1a9eab5d23138);
+            
+        
+
+        marker_9c2579352039a25faf966d13ec307093.bindPopup(popup_96f8d3ed09ae713a6ce98d3a6680e79b)
+        ;
+
+        
+    
+    
+            var marker_8a7c8159c47245583bfb7aa534c556a8 = L.marker(
+                [52.5002, 13.35273],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_02c42bffcae1a6f8431308e0d7116a6c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_57d8663108f3b51875c476905138443e = $(`<div id="html_57d8663108f3b51875c476905138443e" style="width: 100.0%; height: 100.0%;">Numa | Drift (Ex. Gaijin) <br> 298.0€</div>`)[0];
+                popup_02c42bffcae1a6f8431308e0d7116a6c.setContent(html_57d8663108f3b51875c476905138443e);
+            
+        
+
+        marker_8a7c8159c47245583bfb7aa534c556a8.bindPopup(popup_02c42bffcae1a6f8431308e0d7116a6c)
+        ;
+
+        
+    
+    
+            var marker_277c5dd52ed07a1d39df856fba3e7bcc = L.marker(
+                [52.49567, 13.396189],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_581f2a6de6de446179015c3579153691 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ae92d28ab940765ded247b616cfbc189 = $(`<div id="html_ae92d28ab940765ded247b616cfbc189" style="width: 100.0%; height: 100.0%;">Nena Apartments Kreuzberg 61 <br> 115.0€</div>`)[0];
+                popup_581f2a6de6de446179015c3579153691.setContent(html_ae92d28ab940765ded247b616cfbc189);
+            
+        
+
+        marker_277c5dd52ed07a1d39df856fba3e7bcc.bindPopup(popup_581f2a6de6de446179015c3579153691)
+        ;
+
+        
+    
+    
+            var marker_c84ee2552d1cedeb8395e262ced1c61e = L.marker(
+                [52.50173, 13.41092],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_a7c6e7111f75c66ad1ca1269c0d2f6c8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2a5e0814ab1a7ea2e43c84ae76f8bce8 = $(`<div id="html_2a5e0814ab1a7ea2e43c84ae76f8bce8" style="width: 100.0%; height: 100.0%;">Nena Apartments Moritzplatz <br> 116.0€</div>`)[0];
+                popup_a7c6e7111f75c66ad1ca1269c0d2f6c8.setContent(html_2a5e0814ab1a7ea2e43c84ae76f8bce8);
+            
+        
+
+        marker_c84ee2552d1cedeb8395e262ced1c61e.bindPopup(popup_a7c6e7111f75c66ad1ca1269c0d2f6c8)
+        ;
+
+        
+    
+    
+            var marker_4c18c1c1416bfc2dbc5b36724b042cf6 = L.marker(
+                [52.50367, 13.41222],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_e57cae6fb5b55400ec267dfc1b6bade9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_025745e6dd22eb359442ae77249eeca9 = $(`<div id="html_025745e6dd22eb359442ae77249eeca9" style="width: 100.0%; height: 100.0%;">Nena Apartments Moritzplatz <br> 144.0€</div>`)[0];
+                popup_e57cae6fb5b55400ec267dfc1b6bade9.setContent(html_025745e6dd22eb359442ae77249eeca9);
+            
+        
+
+        marker_4c18c1c1416bfc2dbc5b36724b042cf6.bindPopup(popup_e57cae6fb5b55400ec267dfc1b6bade9)
+        ;
+
+        
+    
+    
+            var marker_8531db0484df5e90e4a2960e92980ca2 = L.marker(
+                [52.51181, 13.455815],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_74c02079b700d6415f4dae109af10466 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_48c8e52c0664ba8d2c42909cbddcb555 = $(`<div id="html_48c8e52c0664ba8d2c42909cbddcb555" style="width: 100.0%; height: 100.0%;">Numa | Sketch <br> 69.0€</div>`)[0];
+                popup_74c02079b700d6415f4dae109af10466.setContent(html_48c8e52c0664ba8d2c42909cbddcb555);
+            
+        
+
+        marker_8531db0484df5e90e4a2960e92980ca2.bindPopup(popup_74c02079b700d6415f4dae109af10466)
+        ;
+
+        
+    
+    
+            var marker_8bfb352246111d6a1fbac825e8d04d31 = L.marker(
+                [52.51181, 13.455815],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_7746fabf8be2b6e8cbbc10f2548cada0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6e7e2039249cb1a69fbcc941bde50282 = $(`<div id="html_6e7e2039249cb1a69fbcc941bde50282" style="width: 100.0%; height: 100.0%;">Numa | Sketch <br> 91.0€</div>`)[0];
+                popup_7746fabf8be2b6e8cbbc10f2548cada0.setContent(html_6e7e2039249cb1a69fbcc941bde50282);
+            
+        
+
+        marker_8bfb352246111d6a1fbac825e8d04d31.bindPopup(popup_7746fabf8be2b6e8cbbc10f2548cada0)
+        ;
+
+        
+    
+    
+            var marker_1d8dd8e1b1093de497bca7ebd37af96d = L.marker(
+                [52.51181, 13.455815],
+                {}
+            ).addTo(marker_cluster_a2c4a4aa2d2f40202a56d580708ba7f6);
+        
+    
+        var popup_3fe9ce1dfecf217966d52c1f7190f703 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_50b0cd325e845844f42d9c3696746d8c = $(`<div id="html_50b0cd325e845844f42d9c3696746d8c" style="width: 100.0%; height: 100.0%;">Numa | Sketch <br> 100.0€</div>`)[0];
+                popup_3fe9ce1dfecf217966d52c1f7190f703.setContent(html_50b0cd325e845844f42d9c3696746d8c);
+            
+        
+
+        marker_1d8dd8e1b1093de497bca7ebd37af96d.bindPopup(popup_3fe9ce1dfecf217966d52c1f7190f703)
+        ;
+
+        
+    
+</script>
+</html>

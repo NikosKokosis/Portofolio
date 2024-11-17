@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Nikolas Kokosis">
+    <title>Airbnb Price Analysis in Berlin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+        header {
+            background: #6200ea;
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        .data-story {
+            font-style: italic;
+            color: #555;
+        }
+        h2 {
+            font-size: 2em;
+            color: #6200ea;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .chart {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 15px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .chart-container2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .chart2 {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 15px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .chart h3 {
+            text-align: center;
+            font-size: 1.2em; /* Adjust size if needed */
+            margin-bottom: 20px; /* Optional for spacing */
+            color: #333; /* Optional for consistent styling */
+        }
+        .chart2 h3 {
+            text-align: center;
+            font-size: 1.2em; /* Adjust size if needed */
+            margin-bottom: 20px; /* Optional for spacing */
+            color: #333; /* Optional for consistent styling */
+        }
+        footer {
+            background: #6200ea;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            position: relative;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .highlight {
+            color: #6200ea;
+            font-weight: bold;
+        }
+        /* Interactive Button */
+        .btn {
+            background-color: #6200ea;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1em;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #3700b3;
+        }
+
+        /* Fullscreen image styling */
+        .fullscreen-image {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%; /* Adjust for fullscreen size */
+            height: auto;
+            z-index: 1000;
+            background: white;
+            border: 2px solid #6200ea;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none; /* Hidden by default */
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Airbnb Price Analysis in Berlin</h1>
+        <p>Exploring the Impact of Room Types, Hosts, and Seasonal Trends on Pricing</p>
+    </header>
+
+    <div class="container">
+        <section id="intro">
+            <h2>Introduction</h2>
+            <p>This project analyzes Airbnb listings in Berlin, focusing on the factors that influence pricing. The primary variables of interest are room type, host type (Superhost vs. Non-Superhost) and seasonal trends. By understanding how these factors impact rental prices, we aim to uncover key insights that can help both guests and hosts make informed decisions. The dataset spans listings from 2019 to 2023, offering a comprehensive view of the market over a multi-year period.</p>
+        </section>
+
+        <section id="price-room-type">
+            <h2>Price vs Room Type Analysis</h2>
+            <p>We analyzed the relationship between room type and price over a timeline from October 2019 to March 2023. Our findings show distinct trends in pricing across the four Airbnb accommodation categories:</p>
+            <ul>
+                <li><strong>Entire homes/apartments</strong> consistently had the highest prices, offering a sense of luxury and privacy.</li>
+                <li><strong>Private rooms</strong> remained affordable, providing a balance of comfort and cost-effectiveness for travelers.</li>
+                <li><strong>Shared rooms</strong> were the most economical choice, appealing to budget-conscious travelers.</li>
+                <li><strong>Hotel rooms</strong> exhibited a wider variance in prices, making them an unpredictable but sometimes competitive option.</li>
+            </ul>
+
+            <div class="chart-container">
+                <div class="chart">
+                    <h3>Price Distribution by Room Type</h3>
+                    <img src="../images/projects/airbnbs/priceDistrubution.png" alt="Price vs Room Type" style="width: 100%; cursor: pointer;" onclick="enlargeImage(this)">
+                </div>
+            </div>
+            
+            <p class="data-story">The timeline reveals how external factors, such as the COVID-19 pandemic, significantly influenced pricing and demand. From April 2020 to July 2020, there was a noticeable decline in prices for entire homes/apartments and private rooms, reflecting the drop in demand during the initial outbreak. A moderate recovery began in summer 2020 as restrictions eased, followed by another decline between November 2020 and August 2021 due to the pandemic's resurgence.</p>
+            <p class="data-story">By mid-2021, demand and prices surged, especially for entire homes/apartments, as travel resumed. This price increase likely made shared rooms and some hotel rooms more attractive alternatives. The trend highlights how guests adjusted to higher prices by opting for more economical or newly introduced options, such as hotel rooms, while hosts adapted to changing market conditions.</p>
+            <p class="data-story">Our analysis underscores the evolving landscape of Airbnb accommodations in Berlin and the broader impact of external events on traveler behavior and pricing strategies.</p>
+        
+        </section>
+
+        
+        
+        <div id="image-overlay" class="overlay" onclick="closeImage()"></div>
+        
+
+        <section id="room-type-proportions">
+            <h2>Room Type Distribution</h2>
+            <p>Our analysis of Airbnb listings reveals the distribution of room types available in the Berlin market. The majority of accommodations fall into the "Entire home/apartment" category, with smaller proportions for other room types:</p>
+            <ul>
+                <li><strong>Entire homes/apartments:</strong> 64.69% of listings, making it the most common choice for travelers seeking privacy and full control of the space.</li>
+                <li><strong>Private rooms:</strong> 33.14% of listings, providing a comfortable and budget-friendly option while sharing a property with the host or other guests.</li>
+                <li><strong>Shared rooms:</strong> 1.21% of listings, catering to travelers with a tight budget, offering the most economical stay option.</li>
+                <li><strong>Hotel rooms:</strong> 0.96% of listings, a newer addition to the platform, offering a mix of traditional hotel amenities and Airbnb flexibility.</li>
+            </ul>
+
+            <div class="chart-container2">
+                <div class="chart2">
+                    <!-- <h3>Room Type Distribution Pie Chart</h3> -->
+                    <img src="../images/projects/airbnbs/pieRooms.png" alt="Room Type Proportions Pie Chart" style="width: 100%; cursor: pointer;" onclick="enlargeImage(this)">
+                </div>
+            </div>
+            
+            <p class="data-story">These proportions highlight the dominance of entire homes/apartments in Airbnb's offerings, reflecting a preference for fully independent stays. Private rooms also hold a significant share, appealing to travelers balancing cost and comfort. Shared rooms and hotel rooms, while less common, provide niche options for budget-conscious travelers and those seeking hotel-like experiences within the Airbnb ecosystem.</p>
+        
+        </section>
+        <div id="image-overlay" class="overlay" onclick="closeImage()"></div>
+        
+
+        <section id="host-type-analysis">
+            <h2>Host Type and Listing Availability</h2>
+            <p>Our analysis highlights key differences in listing availability between Superhosts and Non-Superhosts, focusing on the correlation between host type and availability days. Two histograms were generated to better visualize the values after one day of availability, as zero availability days dominate the counts, making it challenging to display other trends clearly.</p>
+            <p>The findings reveal that Superhosts generally have fewer available days compared to Non-Superhosts, reflecting the higher demand for their listings. This is particularly evident in the initial bar of the plots, where a significant number of Non-Superhost listings have zero availability days. This suggests that many Non-Superhosts may close their listings due to unfavorable conditions or low traveler demand.</p>
+
+            <div class="chart-container">
+                <div class="chart">
+                    <h3>Availability Days by Host Type</h3>
+                    <img src="../images/projects/airbnbs/availabilityDaysHistogram.png" alt="Availability Days by Host Type" style="width: 100%; cursor: pointer;" onclick="enlargeImage(this)">
+                </div>
+            </div>
+
+            <p class="data-story">As we examine availability days across different ranges, a few patterns emerge:</p>
+            <ul>
+                <li><strong>Low availability (1-80 days):</strong> Non-Superhosts consistently outnumber Superhosts, suggesting a scarcity of Superhosts in Berlin and higher availability for last-minute travelers.</li>
+                <li><strong>Medium availability (80-220 days):</strong> The distribution becomes more balanced between the two categories, indicating similar activity levels for medium-term bookings.</li>
+                <li><strong>High availability (220-365 days):</strong> A growing disparity is observed, with an increasing number of Non-Superhost listings compared to Superhosts. In the last bar (330-365 days), the gap is most pronounced, with approximately 1000 Non-Superhost listings versus only 100 Superhost listings.</li>
+            </ul>
+            <p class="data-story">These trends reflect the logical pattern of higher demand for Superhosts, whose proven track record attracts travelers. Superhost listings are likely to close earlier as they reach their maximum availability. Conversely, Non-Superhost listings remain more widely available throughout the year, offering flexibility for last-minute bookings.</p>
+            <p class="data-story">Overall, this analysis underscores the strong correlation between host type and listing availability, illustrating how traveler preferences shape booking patterns in the Berlin Airbnb market.</p>
+        
+        </section>
+        
+        <div id="image-overlay" class="overlay" onclick="closeImage()"></div>
+
+        <section id="finest-listings">
+            <h2>Top Listings by Ratings and Reviews</h2>
+            <p>To identify the finest listings, we analyzed hosts based on their total ratings and the number of reviews. To ensure a fair evaluation, we applied filters that included only hosts with more than 500 reviews and an average of at least 10 reviews per month. These filters helped us focus on the most popular and consistently rated properties.</p>
+            <p>Our findings highlight several standout hosts:</p>
+            <ul>
+                <li><strong>Numa | Nook</strong>: Achieved the highest average rating of 4.81, showcasing its consistent ability to exceed guest expectations.</li>
+                <li><strong>Numa | Drift (Ex. Gaijin)</strong>: With an impressive rating of 4.80 and 1622 reviews, it stands as one of the most popular choices for travelers.</li>
+                <li><strong>Stayery</strong>: Received a strong average rating of 4.75, combining unique offerings with positive guest feedback.</li>
+                <li><strong>Nena Apartments Metropolpark Berlin</strong>: The most reviewed host with 1806 reviews, indicating immense popularity among travelers.</li>
+            </ul>
+
+            <div class="chart-container">
+                <div class="chart">
+                    <h3>Top Listings Based on Reviews</h3>
+                    <img src="../images/projects/airbnbs/topListings.png" alt="Top Listings by Ratings and Reviews" style="width: 80%; cursor: pointer;" onclick="enlargeImage(this)">
+                </div>
+            </div>
+
+            <p class="data-story">These insights suggest that hosts like <strong>Numa | Drift</strong> and <strong>Numa | Nook</strong> not only maintain high ratings but also receive a substantial number of reviews, reflecting their ability to deliver exceptional guest experiences. The prominence of the Numa brand indicates a consistent standard of quality across its accommodations, making it a reliable choice for travelers.</p>
+            <p class="data-story">Interestingly, the data also reveals that Numa and Nena properties dominate the Berlin Airbnb market, offering a mix of high ratings and popularity. To further explore their trajectory, we examined the calendar data to analyze the average prices for their upcoming listings, providing a deeper understanding of price trends for these highly rated properties.</p>
+            <p>All key metrics are summarized in the table below, sorted in descending order based on the <strong>"total_rate"</strong>. Additionally, the accompanying table visualizes the data sorted by <strong>"number_of_reviews"</strong>.</p>
+        
+            <div class="chart-container2">
+                <div class="chart2">
+                    <h3>Average Prices for Numa and Nena Properties</h3>
+                    <img src="../images/projects/airbnbs/priceTrajectory.jpg" alt="Average Prices for Numa and Nena Listings" style="width: 100%; cursor: pointer;" onclick="enlargeImage(this)">
+                </div>
+            </div>
+        </section>
+        <div id="image-overlay" class="overlay" onclick="closeImage()"></div>
+
+
+        <section id="price-trends">
+            <h2>Price Trends for Nena vs. Numa</h2>
+            <p>We analyzed pricing trends for Nena and Numa, two prominent Airbnb hosts in Berlin, using calendar data from 2023. The analysis highlights differences in their pricing strategies and seasonal variations:</p>
+            <ul>
+                <li><strong>Numa:</strong> Maintains higher average prices, catering to a premium market with fewer fluctuations.</li>
+                <li><strong>Nena:</strong> Exhibits significant seasonality, with prices peaking during high-demand periods such as June to September and specific events in late September.</li>
+            </ul>
+            <p class="data-story">This comparison reveals that Numa targets travelers seeking high-end accommodations, while Nena adjusts pricing dynamically based on demand, making it a more budget-conscious choice. For example:</p>
+            <ul>
+                <li>Between June and September 2023, Nena displayed noticeable price increases aligned with peak tourist seasons.</li>
+                <li>Both companies experienced a sharp price surge in the second half of September, potentially due to major events or festivals in Berlin.</li>
+            </ul>
+        
+            <div class="chart-container">
+                <div class="chart">
+                    <h3>Price Comparison: Nena vs. Numa</h3>
+                    <img src="../images/projects/airbnbs/priceComparison.png" alt="Price Trends for Nena vs. Numa" style="width: 90%; cursor: pointer;" onclick="enlargeImage(this) ">
+                </div>
+            </div>
+            <div id="image-overlay" class="overlay" onclick="closeImage()"></div>
+        
+            <p class="data-story">The histogram below provides a deeper understanding of price distributions, showing distinct strategies employed by Nena and Numa:</p>
+            <ul>
+                <li><strong>Numa:</strong> A broader price range, with a focus on high-priced options, reflecting their emphasis on luxury accommodations. The lowest price observed was €76.0, while the highest reached €476.1.</li>
+                <li><strong>Nena:</strong> Offers more consistent pricing in the medium range, appealing to budget-conscious travelers. Prices ranged from €109.5 to €356.75 during the analyzed period.</li>
+            </ul>
+        
+            <div class="chart-container">
+                <div class="chart">
+                    <h3>Price Distribution: Nena vs. Numa</h3>
+                    <img src="../images/projects/airbnbs/priceDistribution.png" alt="Price Distribution for Nena and Numa" style="width: 80%; cursor: pointer;" onclick="enlargeImage(this)">
+                </div>
+            </div>
+        
+            <p class="data-story">The differences in pricing strategies correlate with guest perceptions:</p>
+            <ul>
+                <li><strong>Numa:</strong> Generally receives higher ratings due to a wide range of offerings, appealing to diverse traveler preferences.</li>
+                <li><strong>Nena:</strong> While popular and reviewed by a larger customer base, their narrower price range may limit their appeal for guests seeking luxury accommodations.</li>
+            </ul>
+            <p>In conclusion, Numa and Nena cater to distinct market segments. Numa’s focus on high-end offerings attracts travelers willing to pay a premium, contributing to higher average ratings. Nena’s consistent pricing and medium-priced options make it a popular choice among budget-conscious travelers, reflected in their larger number of reviews.</p>
+       
+
+       
+            <section id="price-map-visualization">
+                <h2>Price Visualization on Map</h2>
+                <p>This section visualizes all Airbnb rooms in Berlin, showing the names and prices of listings. You can also filter for rooms hosted by the top three hosts from Nena and Numa with the best reviews and ratings.</p>
+            
+                <div class="chart-container">
+                    <div class="chart">
+                        <h3>All Airbnb Listings in Berlin</h3>
+                        <iframe src="../images/projects/airbnbs/berlin_marker_cluster_map.html" width="100%" height="500" style="border: none;"></iframe>
+                        <div id="all-listings-map">
+                            <!-- Folium map placeholder -->
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="chart-container">
+                    <div class="chart">
+                        <h3>Top 3 Hosts from Nena and Numa</h3>
+                        <iframe src="../images/projects/airbnbs/berlin_marker_cluster_map1.html" width="100%" height="500" style="border: none;"></iframe>
+                        <div id="top-hosts-map">
+                            <!-- Folium map placeholder -->
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="chart-container">
+                    <div class="chart">
+                        <h3>All Listings by Nena and Numa</h3>
+                        <iframe src="../images/projects/airbnbs/berlin_marker_cluster_map2.html" width="100%" height="500" style="border: none;"></iframe>
+                        <div id="nena-numa-listings-map">
+                            <!-- Folium map placeholder -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    
+            <section id="price-distribution">
+                <h2>Listing and Price Distribution by Neighborhood</h2>
+                <p>Explore the distribution of Airbnb listings in Berlin based on the neighborhood. We’ll compare both the mean and median prices to see how they vary across different areas.</p>
+            
+                <div class="chart-container">
+                    <div class="chart">
+                        <h3>Number of Listings by Neighborhood</h3>
+                        <!-- Embed your chart here for Mean Price by Neighborhood -->
+                        <iframe src="../images/projects/airbnbs/berlin_marker_cluster_map3.html" width="100%" height="500" style="border: none;"></iframe>
+                        <div id="nena-numa-listings-map">
+                            <p class="data-story">Airbnb listings in Berlin are more concentrated in central areas, with Alexanderplatz having the highest number at 785 listings. Other central neighborhoods like Frankfurter Allee Süd FK (638), Tempelhofer Vorstadt (593) and Brunnenstr. Süd (496) also have significant numbers. In contrast, more peripheral areas, such as Marzahn-Nord (1), Neu-Hohenschönhausen Süd (2), and Malchow (2), have fewer listings. This pattern suggests that central locations attract more listings, while outer regions offer fewer options.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart">
+                        <h3>Mean Price by Neighborhood</h3>
+                        <!-- Embed your chart here for Mean Price by Neighborhood -->
+                        <iframe src="../images/projects/airbnbs/berlin_marker_cluster_map4.html" width="100%" height="500" style="border: none;"></iframe>
+                    </div>
+                </div>
+            
+                <div class="chart-container">
+                    <div class="chart">
+                        <h3>Median Price by Neighborhood</h3>
+                        <!-- Embed your chart here for Median Price by Neighborhood -->
+                        <iframe src="../images/projects/airbnbs/berlin_marker_cluster_map5.html" width="100%" height="500" style="border: none;"></iframe>
+                    </div>
+                </div>
+
+                <p>The neighborhoods of Haselhorst, Forst Grunewald and Marzahn-Süd display distinct variations in the color scheme if we compare two plots. These changes in color on the plot indicate fluctuations in the median prices within these areas.</p>
+
+                <p>This means:<br>
+                    The average cost of Airbnbs in certain neighborhoods can be greatly affected by a big difference in prices. This means that there are significant variations in the prices of individual listings within the area. As a result, the average price may not give an accurate picture of the actual pricing situation in the neighborhood because of the wide range of prices that exist.</p>
+            </section>
+            
+            <section id="price-analysis">
+                <h2>Price Analysis: Median vs. Mean</h2>
+                <p>We observe that areas like Marzahn - Hellersdorf show significant differences between mean and median prices, indicating a range of room prices. Meanwhile, central areas like Mitte show higher prices on average due to the premium location.</p>
+                
+                <div class="chart-container">
+                    <div class="chart">
+                        <h3>Median Price by Neighborhood Group in Berlin</h3>
+                        <!-- Embed your chart here for Median Price by Neighborhood -->
+                        <iframe src="../images/projects/airbnbs/berlin_marker_cluster_map7.html" width="100%" height="500" style="border: none;"></iframe>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart">
+                        <h3>Median Price by Neighborhood Group in Berlin</h3>
+                        <!-- Embed your chart here for Median Price by Neighborhood -->
+                        <iframe src="../images/projects/airbnbs/berlin_marker_cluster_map8.html" width="100%" height="500" style="border: none;"></iframe>
+                    </div>
+                </div>
+                    
+                <div class="chart-container">
+                    <div class="chart">
+                        <h3>Price Distribution Insights</h3>
+                        <p>The distribution analysis reveals that in some neighborhoods, the mean price is significantly higher than the median, suggesting a few high-priced listings. In contrast, areas like Treptow - Köpenick exhibit a more balanced pricing structure with a notable mix of affordable and more expensive listings.</p>
+                        <!-- Embed any relevant visuals or charts here -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="conclusion">
+                <h2>Conclusion: Key Takeaways from Airbnb Price Analysis in Berlin</h2>
+                <p>This analysis highlights the factors shaping Berlin's Airbnb market:</p>
+                <ul>
+                    <li><strong>Room Types and Pricing:</strong> Entire homes dominate due to their privacy appeal, while private and shared rooms serve budget travelers, especially during peak seasons.</li>
+                    <li><strong>Superhosts and Availability:</strong> Superhosts, known for reliability, see higher demand and fewer availability days, while Non-Superhosts offer flexibility for spontaneous bookings.</li>
+                    <li><strong>Numa vs. Nena:</strong> Numa excels in luxury with higher ratings and premium prices, whereas Nena’s budget-friendly strategy leads in reviews and popularity.</li>
+                    <li><strong>Neighborhood Patterns:</strong> Central areas like Mitte command high prices for their convenience, while outer regions offer affordable options for varied traveler needs.</li>
+                </ul>
+                <p>These insights enable guests to balance cost and experience while helping hosts adapt strategies for demand and profitability. This underscores the power of data in navigating Berlin's dynamic Airbnb market.</p>
+            </section>
+
+
+    <script>
+        function enlargeImage(img) {
+            // Create an enlarged version of the image
+            const overlay = document.getElementById("image-overlay");
+            const fullScreenImg = document.createElement("img");
+            fullScreenImg.src = img.src;
+            fullScreenImg.className = "fullscreen-image";
+            fullScreenImg.onclick = closeImage; // Close on click
+            overlay.appendChild(fullScreenImg);
+            overlay.style.display = "block";
+        }
+    
+        function closeImage() {
+            const overlay = document.getElementById("image-overlay");
+            overlay.style.display = "none";
+            overlay.innerHTML = ""; // Clear the image from the overlay
+        }
+    </script>
+
+</body>
+</html>
