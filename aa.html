@@ -1,78 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Airbnb Price Analysis in Berlin</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Series Forecasting Analysis in M4 Competition</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional: link to your CSS file for styling -->
 </head>
 <body>
-  <header>
-    <h1>Airbnb Price Analysis in Berlin</h1>
-    <p>Insights into Airbnb listings, room types, host types, and trends in Berlin</p>
-  </header>
 
-  <!-- Import Libraries Section -->
-  <section>
-    <h2>Import Libraries and Load Datasets</h2>
-    <p>We begin by importing the necessary libraries for analysis and loading the Airbnb data for Berlin. This data can provide insights into various aspects of Airbnb listings in the city. You can view the dataset and schema documentation at:</p>
-    <ul>
-      <li><a href="http://insideairbnb.com/get-the-data/" target="_blank">Inside Airbnb Dataset Link</a></li>
-      <li><a href="https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit#gid=1322284596" target="_blank">Schema Documentation</a></li>
-    </ul>
-    <p>For this analysis, we focus on the 'listings' DataFrame, as the 'reviews' DataFrame does not provide columns significantly impacting our analysis.</p>
-  </section>
+    <header>
+        <h1>Time Series Forecasting Analysis in M4 Competition</h1>
+    </header>
 
-  <!-- Price and Room Type Comparison by Last Review Date Section -->
-  <section>
-    <h2>Price and Room Type Analysis by Last Review Date</h2>
-    <p>In analyzing price trends across different room types, the "price" column is converted from an object to a numeric type and adjusted from dollars to euros for accuracy. Additionally, we transform "last_review" to a datetime format and treat "room_type" as a categorical variable.</p>
-    <p><strong>Visualization:</strong> A scatter plot of room prices over time reveals trends influenced by events, such as the COVID-19 pandemic. This plot helps to capture shifts in demand and pricing patterns in the Berlin Airbnb market.</p>
-    <p>The room type distribution in the dataset includes:</p>
-    <ul>
-      <li>Entire home/apt: 7794</li>
-      <li>Private room: 3993</li>
-      <li>Shared room: 146</li>
-      <li>Hotel room: 116</li>
-    </ul>
-  </section>
+    <nav>
+        <ul>
+            <li><a href="#overview">Project Overview</a></li>
+            <li><a href="#daily-data">Daily Data</a></li>
+            <li><a href="#quarterly-data">Quarterly Data</a></li>
+            <li><a href="#conclusions">Conclusions</a></li>
+        </ul>
+    </nav>
 
-  <!-- Room Type Distribution Section -->
-  <section>
-    <h2>Distribution of Room Types</h2>
-    <p>The distribution of room types provides insights into which types of accommodation are most available in Berlin.</p>
-    <p><strong>Visualization:</strong> This data is visualized in the form of a pie chart, illustrating the preferences of travelers in Berlin. Entire homes/apartments constitute the majority of available listings, with private rooms as the next largest category.</p>
-    <ul>
-      <li>Entire home/apt: 6292</li>
-      <li>Private room: 3240</li>
-      <li>Shared room: 119</li>
-      <li>Hotel room: 107</li>
-    </ul>
-  </section>
+    <section id="overview">
+        <h2>Project Overview</h2>
+        <p>This project delves into time series data analysis and prediction using the M4 competition dataset from Kaggle. The dataset encompasses various time intervals, such as hourly, daily, weekly, monthly, quarterly, and yearly. We aim to explore and evaluate different forecasting techniques, from traditional statistical methods to modern machine learning models, on this dataset.</p>
+        <p>In our analysis, we focus on two main categories of data: daily data and quarterly data. Each category presents unique challenges and requires specific forecasting approaches.</p>
+    </section>
 
-  <!-- Host Type and Listing Availability Days Section -->
-  <section>
-    <h2>Host Type and Listing Availability</h2>
-    <p>By examining host types and listing availability, we can better understand how different hosts manage their properties.</p>
-    <p><strong>Visualization:</strong> A histogram displays the differences in availability days between Superhosts and Not Superhosts. Superhosts generally have fewer availability days, potentially indicating higher demand for their properties.</p>
-  </section>
+    <section id="daily-data">
+        <h2>Daily Data</h2>
+        <p>In this section, we analyze daily time series data using various methods:</p>
 
-  <!-- Exquisite Listings: Best Rooms and Hosts Section -->
-  <section>
-    <h2>Top-rated Listings and Hosts</h2>
-    <p>We calculated a "total_rate" column to identify top-rated listings, focusing on hosts with more than 500 reviews and a minimum of 10 reviews per month.</p>
-    <p><strong>Visualization:</strong> A bar chart highlights these top-rated listings, such as Numa | Nook and Stayery, which consistently receive high reviews and ratings. This analysis showcases the most popular and best-reviewed listings in Berlin.</p>
-  </section>
+        <h3>Simple Exponential Smoothing (SES)</h3>
+        <p>SES is a straightforward statistical method for predicting future values by weighted averaging of past data points. While useful for time series data with continuous levels and no significant trends or seasonality, SES may not perform well with complex patterns.</p>
 
-  <!-- Price Trends for Nena and Numa Section -->
-  <section>
-    <h2>Price Trends for Nena and Numa</h2>
-    <p>The analysis extends to studying future price trends for prominent hosts Nena and Numa.</p>
-    <p><strong>Visualization:</strong> A line graph illustrates seasonal and event-driven price fluctuations for these hosts. This helps us understand how demand influences pricing during peak times, as seen in both general trends and specific spikes during holiday seasons or festivals in Berlin.</p>
-  </section>
+        <h3>Holt's Linear Trend Method</h3>
+        <p>Holt's method, also known as Double Exponential Smoothing, extends SES to capture trends in time series data. It is effective for data with trends but no seasonality.</p>
 
-  <!-- Footer -->
-  <footer>
-    <p>To explore more of my projects, visit <a href="https://nikoskokosis.github.io/Portofolio" target="_blank">my portfolio</a>.</p>
-  </footer>
+        <h3>LSTM Models with Different Input Sequence Lengths</h3>
+        <p>We experiment with LSTM models using different input sequence lengths to determine the optimal sequence length for prediction. Our findings shed light on the adaptability and performance of LSTM models for daily data.</p>
+        <ul>
+            <li><strong>Model 1:</strong> Shorter input sequence, reliable generalization but limited pattern detection.</li>
+            <li><strong>Model 2:</strong> Longer input sequence, overfitting and inaccurate predictions.</li>
+        </ul>
+
+        <h3>Adding Trend to SimpleRNN and LSTM Model</h3>
+        <p>To enhance the LSTM and SimpleRNN models, we introduced trend values from the dataset as additional input features. This modification aims to improve pattern recognition and prediction accuracy.</p>
+        <ul>
+            <li><strong>Model 1 - SimpleRNN:</strong> Fluctuations and overfitting, predictions deviated from actual values.</li>
+            <li><strong>Model 2 - LSTM:</strong> Converged well, avoiding overfitting and providing more accurate predictions.</li>
+        </ul>
+
+        <h3>Forecasting Returns: SimpleRNN vs Multi-Layer Perceptron (MLP)</h3>
+        <p>We compare Simple Recurrent Neural Networks (RNN) and Multi-Layer Perceptrons (MLP) in forecasting percentage changes. Our analysis reveals the strengths and limitations of each architecture.</p>
+        <ul>
+            <li><strong>SimpleRNN:</strong> Better at approximating real value patterns.</li>
+            <li><strong>MLP:</strong> Predicts a nearly linear trend, less effective for complex patterns.</li>
+        </ul>
+
+        <h3>Multivariate Forecasting: SimpleRNN vs LSTM vs GRU</h3>
+        <p>We explore the performance of SimpleRNN, LSTM, and GRU models for multivariate forecasting, considering the interaction between different input features. This analysis provides insights into the suitability of each model for handling multiple input variables.</p>
+        <ul>
+            <li><strong>GRU:</strong> Best approximation of actual values, with the lowest RMSE.</li>
+            <li><strong>All Models:</strong> Effective in predicting the first time step, but with increasing uncertainty as the forecasting horizon extends.</li>
+        </ul>
+    </section>
+
+    <section id="quarterly-data">
+        <h2>Quarterly Data</h2>
+        <h3>Holt-Winter Method</h3>
+        <p>The Holt-Winter's Multiplicative Seasonality With Trend (Triple Exponential Smoothing) is applied to quarterly data with clear seasonality. This method accounts for seasonal patterns, trends, and observed values.</p>
+    </section>
+
+    <section id="conclusions">
+        <h2>Final Conclusions</h2>
+        <p>Our research on time series data analysis yields significant conclusions:</p>
+        <ul>
+            <li><strong>Statistical Methods vs Machine Learning:</strong> Traditional methods like SES and Holt's method may not capture complex patterns effectively. Machine learning models offer flexibility and adaptability for non-stationary data.</li>
+            <li><strong>Input to the Model Matters:</strong> The choice of input data representation significantly impacts model performance.</li>
+            <li><strong>Multi-Step Forecasting is Challenging:</strong> Accuracy declines as the time horizon extends.</li>
+            <li><strong>Evaluation Metrics and Predictive Patterns:</strong> GRU provides the highest predictive accuracy, aligning predictions with real data trends.</li>
+            <li><strong>Data Specificity Matters:</strong> Tailoring model selection and preprocessing to the unique characteristics of each dataset is crucial for accurate predictions.</li>
+        </ul>
+        <p>In summary, our research highlights the dynamic nature of time series forecasting. While traditional statistical methods have their place, machine learning models offer enhanced adaptability and accuracy, particularly for complex time series data.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Time Series Forecasting Analysis</p>
+    </footer>
+
 </body>
 </html>

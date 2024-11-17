@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Series Forecasting</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- For Icons -->
+  <style>
+    /* Reset and basic styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-image: url('https://cdn.educba.com/academy/wp-content/uploads/2020/05/Time-Series-Analysis.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed; /* Parallax effect */
+        color: #fff;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Text shadow for contrast */
+        min-height: 100vh; /* Makes sure the body is at least the full height of the viewport */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 10px;
+        padding-bottom: 100px; /* Adds extra space at the bottom */
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 80px 20px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      color: red;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: #fff;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Project Overview Section */
+    #overview {
+      padding: 50px 20px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+      margin: 40px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 80%;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #1e2a47;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .overview-text {
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    .overview-text2 {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    h7 {
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    /* Project Phases Section */
+    #phases {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      width: 80%;
+    }
+
+    .phase {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-shadow: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .phase:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .phase h3 {
+      font-size: 1.7rem;
+      margin-bottom: 10px;
+      color: #333;
+      font-weight: bold;
+      text-shadow: none;
+    }
+
+    .phase p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #666;
+    }
+
+    /* Modal (Popup) Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-content {
+      background-color: whitesmoke;
+      margin: 20px;
+      padding: 30px;
+      border-radius: 10px;
+      width: 60%;
+      max-width: 100px;
+      color: #333;
+      font-size: 1.6rem;
+      text-align: left;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      text-shadow: none;
+      animation: pumpIn 0.3s ease-out;
+    }
+
+    
+    .modal-content p {
+      color: #333; /* Ensures all text inside the modal is dark */
+      font-size: 1rem;
+    }
+
+
+    /* Modal header styling */
+    .modal-content h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #00174e;
+      font-weight: bold;
+      text-align: center;
+    }
+
+
+    /* Modal Image Styling */
+    .modal-content img.responsive {
+      width: 100%;  /* Makes the image stretch to fit the container */
+      max-width: 100%;  /* Prevents it from exceeding the modal's width */
+      height: auto;  /* Maintains aspect ratio */
+      object-fit: contain; /* Ensures the image stays fully visible within the box */
+      border-radius: 10px;  /* Adds rounded corners for a sleek look */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Adds a subtle shadow effect */
+      padding: 15px;  /* Adds padding around the image */
+      transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition for hover effects */
+    }
+
+    /* Hover effect */
+    .modal-content img.responsive:hover {
+      transform: scale(1.05); /* Slight zoom effect */
+      filter: brightness(1.1);  /* Slight brightness increase on hover */
+    }
+
+
+    /* Optional: Adjust the modal content to ensure proper scaling */
+    .modal-content {
+      max-width: 80%; /* Adjusts the width of the modal content box */
+      max-height: 80vh; /* Limits the height to the viewport height */
+      overflow: auto; /* Allows scrolling if the content is too large */
+      padding: 20px;
+    }
+
+
+    /* Close button styling */
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .image-container {
+    text-align: center; /* Centers the image horizontally */
+    }
+
+
+    /* "Pump" animation */
+    @keyframes pumpIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      #phases {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      #phases {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-section h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-section p {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1>Time Series Forecasting in M4 Competition</h1>
+    <p>Exploring vessel movements in the Saronic Bay using real AIS data</p>
+  </div>
+
+  <!-- Project Overview Section -->
+  <section id="overview">
+    <h2>Project Overview</h2>
+    <p class="overview-text">This project delves into time series data analysis and prediction using the M4 competition dataset from Kaggle. The dataset encompasses various time intervals such as hourly, daily, weekly, monthly, quarterly and yearly. We aim to explore and evaluate different forecasting techniques, from traditional statistical methods to modern machine learning models, on this dataset.
+        In our analysis, we focus on two main categories of data: daily data and quarterly data. Each category presents unique challenges and requires specific forecasting approaches.</p>
+  </section>
+
+  <!-- Project Phases Section -->
+
+  <h2 class="section-header">Daily Forecast</h2>
+  <section id="phases">
+    <div class="phase" onclick="openModal('phase1')">
+      <h3><i class="fas fa-chart-line"></i> Simple Exponential Smoothing (SES)</h3>
+    </div>
+  
+    <div class="phase" onclick="openModal('phase2')">
+      <h3><i class="fas fa-arrow-up"></i> Holt's Linear Trend Method</h3>
+    </div>
+  
+    <div class="phase" onclick="openModal('phase3')">
+      <h3><i class="fas fa-network-wired"></i> LSTM Models with Different Input Sequence Lengths</h3>
+    </div>
+  
+    <div class="phase" onclick="openModal('phase4')">
+      <h3><i class="fas fa-arrow-right"></i> Adding Trend to SimpleRNN and LSTM Model</h3>
+    </div>
+  
+    <div class="phase" onclick="openModal('phase5')">
+      <h3><i class="fas fa-layer-group"></i> Multivariate Forecasting: SimpleRNN vs LSTM vs GRU</h3>
+    </div>
+  </section>
+  
+
+  <h7 class="section-header"> Quarterly Forecast </h7>
+  <section id="phases">
+    <div class="phase" onclick="openModal('phase6')">
+      <h3><i class="fas fa-sync-alt"></i> Holt-Winter Method</h3>
+    </div>
+
+  </section>
+
+<!-- Modal Popups for Each Phase -->
+<div id="phase1" class="modal" onclick="closeModal('phase1')">
+  <div class="modal-content" onclick="event.stopPropagation();">
+    <span class="close" onclick="closeModal('phase1')">&times;</span>
+    <h3>Simple Exponential Smoothing</h3>
+    <p class="modal-text">The Simple Exponential Smoothing (SES) method is a widely used technique for time series forecasting, especially when the data is believed to be relatively stable over time. In this process, the method gives more weight to recent observations, with the smoothing factor (α) controlling how much recent data influences the forecast. The core idea behind SES is to generate forecasts by smoothing out fluctuations in the data, making it useful for predicting short-term trends.</p><br> 
+    <p class="modal-text">Key tasks:</p>
+    <ul class="modal-list">
+      <p class="modal-text"> <strong>Data Preprocessing:</strong> We begin by preparing the training and test data. The raw data is transposed and cleaned, ensuring that only the relevant time series data is used for training and testing purposes. This step also involves resetting the index of the data frames and concatenating the train and test data for visual inspection.</p><br> 
+      <p class="modal-text"> <strong>Model Fitting:</strong> The SES model is fit to the training data using a specific smoothing level (α). In the implementation, we test with a fixed smoothing level of 0.2 and also with an optimized value determined by the model itself. The model calculates the forecast for the next set of data points based on the previous observations and their differences (errors).</p><br>
+      <p class="modal-text"> <strong>Forecasting:</strong> The forecast is generated iteratively using the formula:</p>
+      <div class="image-container">
+        <img src="../images/projects/timeseries/SeS.jpg" alt="Database Structure" class="responsive" style="width: 75%; height: auto;">
+      </div><br>
+      <p class="modal-text"><strong>Evaluation Metrics:</strong></p>
+      <ul class="modal-list">
+        <p class="modal-text"><strong>Mean Absolute Error (MAE):</strong> Measures the average magnitude of errors between predicted and actual values.</p>
+        <p class="modal-text"><strong>Mean Squared Error (MSE):</strong> Provides the squared average of the differences between predicted and actual values, penalizing larger errors.</p>
+        <p class="modal-text"><strong>Root Mean Squared Error (RMSE):</strong> The square root of MSE, used to interpret the error in the same units as the target variable.</p>
+        <p class="modal-text"><strong>Mean Absolute Percentage Error (MAPE):</strong> Calculates the error as a percentage of the actual values.</p>
+    </ul><br>
+    <p class="modal-text"><strong>Results:</strong></p>
+    <div class="image-container">
+      <img src="../images/projects/timeseries/sesresult.jpg" alt="Database Structure" class="responsive" style="width: 75%; height: auto;">
+    </div><br>
+    <p class="modal-text"><strong> Visualization:</strong></p>
+    <p class="modal-text"> We plot the last 200 data points of both the training data, the forecasted values, and the actual test data to visualize the performance of the SES model. The green and red lines represent the forecasts from both models, while the blue line shows the actual training data.</p>
+    <div class="image-container">
+      <img src="../images/projects/timeseries/sesplot.png" alt="Database Structure" class="responsive" style="width: 90%; height: auto;">
+    </div><br>
+    <p class="modal-text"><strong> Conclution:</strong></p>
+    <p class="modal-text"> The Simple Exponential Smoothing (SES) method didn't work well for our predictions. It assumes that the data stays the same over time (Stationary Data), but our data has trends and patterns that change. Because of this mismatch, SES didn't give us good forecasts. To make better predictions for this kind of data, we should consider using different methods that can handle trends and patterns (like Holt's Method).</p>
+  </div>
+</div>
+
+<div id="phase2" class="modal" onclick="closeModal('phase2')">
+  <div class="modal-content" onclick="event.stopPropagation();">
+    <span class="close" onclick="closeModal('phase2')">&times;</span>
+    <h3>Holt's Linear Trend Method: Double Exponential Smoothing</h3>
+    <p class="modal-text">Holt’s linear trend method is an extension of Simple Exponential Smoothing (SES), designed to handle data with a trend component. It introduces a trend term to account for systematic changes in the data over time. This makes Holt’s method suitable for forecasting time series that exhibit a consistent upward or downward trajectory.</p><br> 
+    <p class="modal-text">The method uses two smoothing parameters:</p>
+    <ul class="modal-list">
+      <p class="modal-text"> <strong>α (alpha):</strong> Controls the smoothing for the level.</p><br> 
+      <p class="modal-text"> <strong>β (beta):</strong> Controls the smoothing for the trend.</p><br>
+      <p class="modal-text"> <strong>Forecasting:</strong> The forecast is generated iteratively using the formula:</p>
+      <div class="image-container">
+        <img src="../images/projects/timeseries/Holts_linear_method.jpg" alt="Database Structure" class="responsive" style="width: 85%; height: auto;">
+      </div><br>
+      <p class="modal-text"><strong>Implementation and Results:</strong></p>
+      <p class="modal-text">Using the Holt method implemented in Python, we trained the model on a daily time series dataset. The training data was processed to create smooth estimates of the level and trend, which were used for predictions.</p><br>
+      <p class="modal-text">Model Parameters:</p>
+      <ul class="modal-list">
+        <p class="modal-text"><strong>Alpha (α):</strong> 0.7</p>
+        <p class="modal-text"><strong>Beta (β):</strong> 0.25</p><br>
+        <p class="modal-text">We compared the forecasted values against the actual test data and evaluated the performance using the Root Mean Square Error (RMSE).</p>
+        <p class="modal-text"><strong>RMSE:</strong> 2.46</p>
+      </ul><br>
+    <p class="modal-text"><strong> Visualization of Holt's Linear Trend Forecast:</strong></p>
+    <div class="image-container">
+      <img src="../images/projects/timeseries/holtsLinearplot.png" alt="Database Structure" class="responsive" style="width: 90%; height: auto;">
+    </div><br>
+    <p class="modal-text"><strong> Conclution:</strong></p>
+    <p class="modal-text"> It's evident from both the graph and the RMSE (Root Mean Square Error) that Holt's model achieved significantly better predictions compared to the Simple Exponential Smoothing (SES) model. In fact, we can confidently say that Holt's predictions closely resemble the actual values, as indicated when we examine the values in the Forecasting and Actual columns from the tables.</p>
+  </div>
+</div>
+
+<div id="phase3" class="modal" onclick="closeModal('phase3')">
+  <div class="modal-content" onclick="event.stopPropagation();">
+    <span class="close" onclick="closeModal('phase3')">&times;</span>
+    <h3>Exploring Time Series Forecasting with LSTM Models</h3>
+    <p class="modal-text">This section demonstrates a step-by-step approach to building and comparing LSTM-based models for time series forecasting using daily data. By leveraging the capabilities of Keras and TensorFlow, the script handles tasks ranging from preprocessing the data to evaluating the models' performance on a forecasting problem.</p><br> 
+    <p class="modal-text"><strong> Data Preparation:</strong></p>
+    <ul class="modal-list">
+      <p class="modal-text"> The journey begins with preprocessing the time series data. After reading the dataset, it undergoes transposition, cleaning, and indexing to ensure consistency. The training and test sets are scaled using MinMaxScaler to normalize the data, a crucial step for stabilizing the training of neural networks.</p><br> 
+      <p class="modal-text"> To feed data into the LSTM models, a function is created for sequence generation, transforming the time series into input-output pairs based on a specified sequence length.</p><br>
+      <p class="modal-text"><strong>Model Development and Training:</strong></p><br>
+      <p class="modal-text">Two LSTM models are built and trained with different architectures:</p>
+      <p class="modal-text"><strong> First LSTM Model:</strong></p>
+      <ul class="modal-list">
+        <p class="modal-text">Focuses on short-term dependencies using a sequence length of 7.</p>
+        <p class="modal-text">Includes two LSTM layers, dropout for regularization, and dense layers with ReLU and linear activations.
+        <p class="modal-text">Trained for 250 epochs, with the best weights saved using ModelCheckpoint.</p>
+      </ul><br>
+      <p class="modal-text"><strong> Second LSTM Model:</strong></p>
+      <ul class="modal-list">
+        <p class="modal-text">Captures longer-term dependencies with a sequence length of 120.</p>
+        <p class="modal-text">Features deeper layers and additional dropout for robustness.
+        <p class="modal-text">Trained for 350 epochs with a higher learning rate.</p>
+      </ul><br>
+      <p class="modal-text">Both models are compiled with a Mean Squared Error (MSE) loss function and optimized using the Adam optimizer.</p><br>
+    <p class="modal-text"><strong>Forecasting and Evaluation:</strong></p>
+    <p class="modal-text">A custom function enables multistep forecasting for future time points. Forecasted values are compared with the actual test data, visualized through line plots for clear interpretation.</p>
+    <div class="image-container">
+      <img src="../images/projects/timeseries/twolstmsvalidation.png" alt="Database Structure" class="responsive" style="width: 90%; height: auto;">
+    </div>
+    <div class="image-container">
+      <img src="../images/projects/timeseries/twolstmsplot.png" alt="Database Structure" class="responsive" style="width: 90%; height: auto;">
+    </div><br>
+    <p class="modal-text"><strong> Conclution:</strong></p>
+    <ul class="modal-list">
+      <p class="modal-text">Model 1 shows a better ability to make predictions that match the real data, even though it might not be very good at detecting patterns and has some big differences from the actual values.</p><br>
+      <p class="modal-text">On the other hand, Model 2 is too sensitive and tends to make predictions that are completely wrong because it tries to fit the data too closely, which is a problem called overfitting.<br>
+    </ul><br>
+  </div>
+</div>
+
+<div id="phase4" class="modal" onclick="closeModal('phase4')">
+  <div class="modal-content" onclick="event.stopPropagation();">
+    <span class="close" onclick="closeModal('phase4')">&times;</span>
+    <h3>Time Series Forecasting with RNN and LSTM Models</h3>
+    <p class="modal-text">This section focuses on multivariate time series forecasting using SimpleRNN and LSTM models. The data is preprocessed, decomposed into components, and used to train models for predictive analysis. The dataset is split into training and testing data to evaluate model performance.</p><br> 
+    <p class="modal-text"><strong> Data Preparation and Feature Engineering:</strong></p><br>
+    <ul class="modal-list">
+      <p class="modal-text"><strong>Time Series Decomposition:</strong></p>
+      <ul class="modal-list">
+        <p class="modal-text">Decomposed the time series into trend, seasonal, and residual components using additive seasonal decomposition.</p>
+        <p class="modal-text">Applied moving averages and Holt’s exponential smoothing to handle missing values in the trend component.</p><br>
+      </ul>
+      <p class="modal-text"><strong> Scaling and Sequence Creation:</strong></p>
+      <ul class="modal-list">
+        <p class="modal-text">Normalized data using MinMaxScaler.</p>
+        <p class="modal-text">Created sequences with a rolling window approach for multivariate input.</p><br>
+      </ul>
+      <p class="modal-text"><strong> Model Development:</strong></p>
+      <p class="modal-text"><strong>SimpleRNN:</strong></p>
+      <ul class="modal-list">
+        <p class="modal-text">64 RNN units.</p>
+        <p class="modal-text">Dense layers with ReLU activation.</p>
+        <p class="modal-text">Dropout layer to prevent overfitting.</p>
+        <p class="modal-text">100 epochs</p>
+        <p class="modal-text">Batch size: 32</p>
+        <p class="modal-text">Optimizer: Adam</p>
+      </ul><br>
+      <p class="modal-text"><strong>LSTM:</strong></p>
+      <ul class="modal-list">
+        <p class="modal-text">64 RNN units.</p>
+        <p class="modal-text">Stacked LSTM layers with 64 units each.</p>
+        <p class="modal-text">Dense layers with ReLU activation.</p>
+        <p class="modal-text">Dropout layer for regularization.</p>
+        <p class="modal-text">250 epochs</p>
+        <p class="modal-text">Optimizer: Adam</p>
+      </ul><br>
+    <p class="modal-text"><strong>Forecasting and Evaluation:</strong></p>
+    <p class="modal-text">A custom function enables multistep forecasting for future time points. Forecasted values are compared with the actual test data, visualized through line plots for clear interpretation.</p>
+    <div class="image-container">
+      <img src="../images/projects/timeseries/decompvalidation.png" alt="Database Structure" class="responsive" style="width: 90%; height: auto;">
+    </div>
+    <div class="image-container">
+      <img src="../images/projects/timeseries/decopplot.png" alt="Database Structure" class="responsive" style="width: 90%; height: auto;">
+    </div><br>
+    <p class="modal-text"><strong> Conclution:</strong></p>
+    <p class="modal-text">When we compared two models for predicting time series data, the LSTM model stood out as the better option. It performed more accurately and could generalize well, avoiding the problem of overfitting seen in the SimpleRNN model. While the LSTM model isn't perfect and might still have some small errors, it's a strong choice for time series forecasting tasks.</p>
+  </div>
+</div>
+
+<div id="phase5" class="modal" onclick="closeModal('phase5')">
+  <div class="modal-content" onclick="event.stopPropagation();">
+    <span class="close" onclick="closeModal('phase4')">&times;</span>
+    <h3>RNN vs GRU vs LSTM Multivariate Prediction</h3>
+    <p class="modal-text">This section explores the performance of three well-known recurrent neural network architectures—RNN, GRU, and LSTM—on a daily time series dataset from the M4 competition, characterized by an upward trend. The analysis focuses on multivariate prediction, feature engineering, and comparison of the models based on their predictive accuracy.</p><br> 
+    <p class="modal-text">Key Steps:</p><br>
+    <p class="modal-text"><strong> Data Preparation:</strong></p>
+    <ul class="modal-list">
+      <p class="modal-text">Extracted a single time series from the dataset for analysis.</p>
+      <p class="modal-text">Conducted autocorrelation analysis and identified significant lags.</p>
+      <p class="modal-text">Normalized the dataset and created rolling time windows for modeling.</p><br>
+    </ul>
+    <p class="modal-text"><strong> Feature Engineering:</strong></p>
+    <ul class="modal-list">
+      <p class="modal-text">Added daily returns and a binary feature indicating upward trends.</p>
+      <p class="modal-text">Filtered and scaled the dataset to eliminate redundancy and outliers.</p><br>
+    </ul>
+    <p class="modal-text"><strong> Model Development:</strong></p>
+    <ul class="modal-list">
+      <p class="modal-text">Created a flexible function to build RNN, GRU, and LSTM models with L2 regularization.</p>
+      <p class="modal-text">Used a systematic approach to train models with optimized hyperparameters.</p><br>
+    </ul>
+    <p class="modal-text"><strong> Evaluation Metrics:</strong></p>
+    <ul class="modal-list">
+      <p class="modal-text">Assessed models on Mean Square Error (MSE) and Root Mean Square Error (RMSE).</p>
+      <p class="modal-text">Compared single-step and multi-step forecasting accuracy.</p><br>
+    </ul>
+    <p class="modal-text">Key Findings:</p>
+    <ul class="modal-list">
+      <p class="modal-text"><strong>RNN:</strong>Demonstrated basic prediction capabilities but struggled with long-term dependencies.</p>
+      <p class="modal-text"><strong>GRU:</strong>Achieved lower error metrics than RNN, showing better adaptability to trends.</p>
+      <p class="modal-text"><strong>LSTM:</strong>Provided the best performance, effectively capturing complex temporal dynamics and long-term dependencies.</p><br>
+    </ul>
+    <p class="modal-text"><strong>Forecasting and Evaluation:</strong></p>
+    <div class="image-container">
+      <img src="../images/projects/timeseries/lstmBruRnnvalidation.png" alt="Database Structure" class="responsive" style="width: 65%; height: auto;">
+    </div>
+    <div class="image-container">
+      <img src="../images/projects/timeseries/lstmBruRnnplot.png" alt="Database Structure" class="responsive" style="width: 80%; height: auto;">
+    </div><br>
+    <div class="image-container">
+      <img src="../images/projects/timeseries/lstmBruRnnRMSEresult.jpg" alt="Database Structure" class="responsive" style="width: 65%; height: auto;">
+    </div><br>
+    <p class="modal-text"><strong> Conclution:</strong></p>
+    <p class="modal-text">We can see that GRU managed to have lower RMSE than the other 2. We can see that the pattern the 3 models predict is pretty much the same. The difference is that GRU always predicts lower prices than the other 2, or we could infromally say that if we fitted a line from the first to the last point of every linechart, the "slope" of GRU's line is the closest to the "slope" of the True Data line.</p>
+  </div>
+</div>
+
+<div id="phase6" class="modal" onclick="closeModal('phase6')">
+  <div class="modal-content" onclick="event.stopPropagation();">
+    <span class="close" onclick="closeModal('phase7')">&times;</span>
+    <h3>Holt-Winters Multiplicative Seasonality and Trend</h3>
+    <p class="modal-text">The Holt-Winters model is a powerful tool for forecasting time series data, particularly when data exhibits both seasonality and trends. In this implementation, we use the Multiplicative Seasonality with Trend model to predict future values based on historical data.</p><br> 
+    <p class="modal-text"><strong>Data Preparation and Preprocessing:</strong></p>
+    <ul class="modal-list">
+      <p class="modal-text"> We begin by loading the training and testing datasets and cleaning the data. The training data is transposed and the relevant series is selected for model training. The test data is also transposed and aligned for prediction. Missing values are dropped, and indexes are reset for consistency between the training and test data. The combined series (training + test data) is visualized to show both the training and test data points.</p><br> 
+      <p class="modal-text"><strong>Decomposing the Time Series:</strong></p>
+      <p class="modal-text">Using seasonal_decompose, we decompose the time series into four components: the observed data, trend, seasonality, and residuals. This decomposition helps us understand the underlying patterns in the data. The observed component represents the actual data, while the trend reflects the long-term direction. The seasonal component captures periodic fluctuations, and the residual represents any noise or irregularities.</p><br>
+      <p class="modal-text"><strong>Holt-Winters Multiplicative Model Implementation:</strong></p>
+      <ul class="modal-list">
+        <p class="modal-text">Make a custom fanction to use Holt-Winters method. With the multiplicative model, we account for both the trend and seasonality in the data. We estimate the parameters alpha, beta, and gamma, which control the smoothing of the level, trend, and seasonal components, respectively. The model is then fitted, and predictions for the test data are made.</p><br>
+        <p class="modal-text"> <strong>Forecasting:</strong> The forecast is generated iteratively using the formula:</p>
+        <div class="image-container">
+          <img src="../images/projects/timeseries/Holt-Winter.jpg" alt="Database Structure" class="responsive" style="width: 60%; height: auto;">
+        </div><br>
+      </ul><br>
+    <p class="modal-text"><strong> Visualization of Holt-Winters Multiplicative Seasonality and Trend Forecast:</strong></p>
+    <div class="image-container">
+      <img src="../images/projects/timeseries/Holts-Winterplot.png" alt="Database Structure" class="responsive" style="width: 95%; height: auto;">
+    </div><br>
+    <p class="modal-text"><strong> Conclution:</strong></p>
+    <p class="modal-text"> The Holt-Winters multiplicative seasonality and trend model offers a robust method for forecasting time series data with complex seasonal and trend patterns. The implementation effectively handles seasonality and trend simultaneously, providing valuable insights for predictions in fields like finance, sales forecasting, and demand planning. In our model has noticed the pattern of seasonality and understood when values go up and when they go down. However, we can see that some of the predicted values are quite different from the actual values, especially in rows 65 and 66, particularly in row 65.</p>
+  </div>
+</div>
+
+
+
+<!-- Project Overview Section -->
+<section id="overview">
+  <h2>Conclusion</h2>
+  <p class="overview-text2"><strong>Traditional vs. Machine Learning:</strong> While methods like SES and Holt's may miss complex patterns, machine learning models are more adaptable to non-stationary data.</p>
+  <p class="overview-text2"><strong>Input Data Matters:</strong> The choice of input data significantly impacts model performance.</p>
+  <p class="overview-text2"><strong>Multi-Step Forecasting:</strong> Accuracy decreases as the time horizon extends.</p>
+  <p class="overview-text2"><strong>Evaluation Metrics:</strong> GRU models showed the highest predictive accuracy, closely matching real data trends.</p>
+  <p class="overview-text2"><strong>Data Specificity:</strong> Customizing model selection and preprocessing to the dataset’s unique characteristics is key to accurate predictions.</p>
+</section>
+
+
+
+  <script>
+    function openModal(phase) {
+      document.getElementById(phase).style.display = 'flex';
+    }
+  
+    function closeModal(phase) {
+      document.getElementById(phase).style.display = 'none';
+    }
+  </script>
+  
+
+  <script>
+    function openModal(phase) {
+      document.getElementById(phase).style.display = 'flex';
+    }
+
+    function closeModal(phase) {
+      document.getElementById(phase).style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
+
