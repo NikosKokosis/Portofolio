@@ -1,0 +1,278 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f0f0f5;
+    color: #333;
+    overflow-x: hidden;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+p, ul, ol {
+    margin: 0 0 15px;
+}
+
+ul, ol {
+    padding-left: 20px;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('https://onetreeplanted.org/cdn/shop/articles/Healthy_Forest_30c85fe5-6bca-45d3-ad0b-054f94dbef76_3000x.jpg?v=1689261462'); /* Add your image path */
+    display: flex;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 100px 20px;
+    position: relative;
+    animation: fadeIn 2s ease-out;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+    z-index: 1;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #fff;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+/* Animation for Hero Section */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Navigation Bar */
+nav {
+    background: #333;
+    color: white;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background: #ff7e5f; /* Hover background color */
+    color: #fff;
+}
+
+/* Content Sections */
+.content-section {
+    padding: 50px 20px;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: background 0.3s;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideIn 1s forwards;
+}
+
+.content-section:hover {
+    background: #f9f9f9; /* Light background color on hover */
+}
+
+.content-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #feb47b; /* Underline border with gradient color */
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.content-section ul, .content-section ol {
+    text-align: left;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.content-section img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Slide-in Animation */
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Image Hover Effect */
+.content-section img:hover {
+    transform: scale(1.05); /* Zoom effect */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+/* Geospatial Section */
+.geospatial-section {
+    background-image: url('https://example.com/map-image.jpg'); /* Add your map image or map background */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.geospatial-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.geospatial-section p {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 20px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    margin-top: 50px;
+}
+
+footer a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Button Styles */
+button {
+    background-color: #feb47b; /* Button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff7e5f; /* Button hover effect */
+}
+
+/* Image Styling */
+.content-section img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Image Hover Effect */
+.content-section img:hover {
+    transform: scale(1.05); /* Zoom effect */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+/* Responsive Images */
+@media (max-width: 768px) {
+    .content-section img {
+        margin: 10px 0;
+        border-radius: 8px;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .content-section {
+        padding: 30px 10px;
+    }
+
+    .geospatial-section {
+        padding: 50px 10px;
+    }
+}
