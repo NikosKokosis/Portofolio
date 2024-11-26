@@ -1,93 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Series Forecasting Analysis in M4 Competition</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optional: link to your CSS file for styling -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic Accident Analysis</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-
-    <header>
-        <h1>Time Series Forecasting Analysis in M4 Competition</h1>
-    </header>
-
+  <header class="hero">
     <nav>
-        <ul>
-            <li><a href="#overview">Project Overview</a></li>
-            <li><a href="#daily-data">Daily Data</a></li>
-            <li><a href="#quarterly-data">Quarterly Data</a></li>
-            <li><a href="#conclusions">Conclusions</a></li>
-        </ul>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#data-prep">Data Preparation</a></li>
+        <li><a href="#eda">EDA</a></li>
+        <li><a href="#clustering">Clustering</a></li>
+        <li><a href="#classification">Classification</a></li>
+        <li><a href="#insights">Insights</a></li>
+      </ul>
     </nav>
+    <div class="hero-content">
+      <h1>Traffic Accident Analysis & Machine Learning</h1>
+      <p>Unveiling patterns and predicting accident severity using advanced data science techniques.</p>
+    </div>
+  </header>
 
+  <main>
+    <!-- Project Overview -->
     <section id="overview">
-        <h2>Project Overview</h2>
-        <p>This project delves into time series data analysis and prediction using the M4 competition dataset from Kaggle. The dataset encompasses various time intervals, such as hourly, daily, weekly, monthly, quarterly, and yearly. We aim to explore and evaluate different forecasting techniques, from traditional statistical methods to modern machine learning models, on this dataset.</p>
-        <p>In our analysis, we focus on two main categories of data: daily data and quarterly data. Each category presents unique challenges and requires specific forecasting approaches.</p>
+      <h2>Project Overview</h2>
+      <p>This project involved analyzing 2.8M traffic accident records in the U.S., with clustering and classification using ML techniques.</p>
     </section>
 
-    <section id="daily-data">
-        <h2>Daily Data</h2>
-        <p>In this section, we analyze daily time series data using various methods:</p>
-
-        <h3>Simple Exponential Smoothing (SES)</h3>
-        <p>SES is a straightforward statistical method for predicting future values by weighted averaging of past data points. While useful for time series data with continuous levels and no significant trends or seasonality, SES may not perform well with complex patterns.</p>
-
-        <h3>Holt's Linear Trend Method</h3>
-        <p>Holt's method, also known as Double Exponential Smoothing, extends SES to capture trends in time series data. It is effective for data with trends but no seasonality.</p>
-
-        <h3>LSTM Models with Different Input Sequence Lengths</h3>
-        <p>We experiment with LSTM models using different input sequence lengths to determine the optimal sequence length for prediction. Our findings shed light on the adaptability and performance of LSTM models for daily data.</p>
-        <ul>
-            <li><strong>Model 1:</strong> Shorter input sequence, reliable generalization but limited pattern detection.</li>
-            <li><strong>Model 2:</strong> Longer input sequence, overfitting and inaccurate predictions.</li>
-        </ul>
-
-        <h3>Adding Trend to SimpleRNN and LSTM Model</h3>
-        <p>To enhance the LSTM and SimpleRNN models, we introduced trend values from the dataset as additional input features. This modification aims to improve pattern recognition and prediction accuracy.</p>
-        <ul>
-            <li><strong>Model 1 - SimpleRNN:</strong> Fluctuations and overfitting, predictions deviated from actual values.</li>
-            <li><strong>Model 2 - LSTM:</strong> Converged well, avoiding overfitting and providing more accurate predictions.</li>
-        </ul>
-
-        <h3>Forecasting Returns: SimpleRNN vs Multi-Layer Perceptron (MLP)</h3>
-        <p>We compare Simple Recurrent Neural Networks (RNN) and Multi-Layer Perceptrons (MLP) in forecasting percentage changes. Our analysis reveals the strengths and limitations of each architecture.</p>
-        <ul>
-            <li><strong>SimpleRNN:</strong> Better at approximating real value patterns.</li>
-            <li><strong>MLP:</strong> Predicts a nearly linear trend, less effective for complex patterns.</li>
-        </ul>
-
-        <h3>Multivariate Forecasting: SimpleRNN vs LSTM vs GRU</h3>
-        <p>We explore the performance of SimpleRNN, LSTM, and GRU models for multivariate forecasting, considering the interaction between different input features. This analysis provides insights into the suitability of each model for handling multiple input variables.</p>
-        <ul>
-            <li><strong>GRU:</strong> Best approximation of actual values, with the lowest RMSE.</li>
-            <li><strong>All Models:</strong> Effective in predicting the first time step, but with increasing uncertainty as the forecasting horizon extends.</li>
-        </ul>
+    <!-- Data Preparation Section -->
+    <section id="data-prep">
+      <h2>Data Preparation</h2>
+      <div class="carousel">
+        <img src="figure1.png" alt="Severity Levels">
+        <img src="figure2.png" alt="Selected Features">
+        <img src="figure3.png" alt="Null Values">
+        <img src="figure4.png" alt="Outlier Removal">
+      </div>
+      <p>Key Steps: Sampling, feature selection, and outlier removal.</p>
     </section>
 
-    <section id="quarterly-data">
-        <h2>Quarterly Data</h2>
-        <h3>Holt-Winter Method</h3>
-        <p>The Holt-Winter's Multiplicative Seasonality With Trend (Triple Exponential Smoothing) is applied to quarterly data with clear seasonality. This method accounts for seasonal patterns, trends, and observed values.</p>
-    </section>
+    <!-- Add other sections similarly -->
+  </main>
 
-    <section id="conclusions">
-        <h2>Final Conclusions</h2>
-        <p>Our research on time series data analysis yields significant conclusions:</p>
-        <ul>
-            <li><strong>Statistical Methods vs Machine Learning:</strong> Traditional methods like SES and Holt's method may not capture complex patterns effectively. Machine learning models offer flexibility and adaptability for non-stationary data.</li>
-            <li><strong>Input to the Model Matters:</strong> The choice of input data representation significantly impacts model performance.</li>
-            <li><strong>Multi-Step Forecasting is Challenging:</strong> Accuracy declines as the time horizon extends.</li>
-            <li><strong>Evaluation Metrics and Predictive Patterns:</strong> GRU provides the highest predictive accuracy, aligning predictions with real data trends.</li>
-            <li><strong>Data Specificity Matters:</strong> Tailoring model selection and preprocessing to the unique characteristics of each dataset is crucial for accurate predictions.</li>
-        </ul>
-        <p>In summary, our research highlights the dynamic nature of time series forecasting. While traditional statistical methods have their place, machine learning models offer enhanced adaptability and accuracy, particularly for complex time series data.</p>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Time Series Forecasting Analysis</p>
-    </footer>
-
+  <footer>
+    <p>Created by [Your Name] | <a href="https://github.com/yourprofile">GitHub</a> | <a href="yourportfolio.com">Portfolio</a></p>
+  </footer>
 </body>
 </html>

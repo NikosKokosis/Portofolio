@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Accident Analysis in the U.S. (2016–2021)</title>
+    <link rel="stylesheet" href="severitystyle.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Analysis and Machine Learning on Traffic Accident Data</h1>
+            <p>Unveiling Patterns and Predicting Accident Severity Using Data Science Techniques</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#data-preparation">Data Preparation</a></li>
+            <li><a href="#methodology">Methodology</a></li>
+            <li><a href="#eda">Exploratory Data Analysis</a></li>
+            <li><a href="#clustering">Clustering Analysis</a></li>
+            <li><a href="#classification">Classification Task</a></li>
+            <li><a href="#insights">Key Insights</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Project Overview -->
+        <section id="overview" class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                This project involved analyzing and modeling a dataset containing over 2.8 million traffic accident records in the U.S. from February 2016 to December 2021. 
+                A random sample of 100,000 records was selected for detailed analysis, focusing on clustering and classification tasks using machine learning techniques. 
+                The primary aim was to uncover patterns in the data and predict accident severity levels based on relevant features.
+            </p>
+        </section>
+
+        <!-- Data Preparation -->
+        <section id="data-preparation" class="content-section">
+            <h2>Data Preparation</h2>
+            <p>To ensure quality and usability, the data underwent extensive preprocessing:</p>
+            <ul>
+                <li><strong>Sampling and Balancing:</strong> The sample was stratified to include 25,000 records for each of the four severity categories (1–4).</li>
+                <li><strong>Feature Selection:</strong> Selected features included Severity, Duration, Start_Lat, Start_Lon and weather attributes.</li>
+                <li><strong>Handling Missing Values:</strong> Null values in numerical features were imputed using the median grouped by city, while categorical features were dropped or transformed.</li>
+                <li><strong>Outlier Removal:</strong> Outliers were removed, improving the dataset's quality for analysis.</li>
+            </ul>
+            <!-- Image Carousel for Figures 1-4 -->
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="../images/projects/severity/data_preparation1.jpg" alt="Figure 1 - Severity Levels Distribution">
+                    <p>Figure 1 - Distribution of severity levels in the original vs. sampled dataset.</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="../images/projects/severity/data_preparation3.jpg" alt="Figure 3 - Null Values">
+                    <p>Figure 2 - Visual depiction of null values across features.</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="../images/projects/severity/data_preparation4.png" alt="Figure 4 - Outlier Removal" style="width: 70%; height: auto;">
+                    <p>Figure 3 - Box plot before and after outlier removal, showcasing cleaned data.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology Section -->
+        <section id="methodology" class="content-section">
+            <h2>Methodology</h2>
+            <p>
+                Regarding the dataset used, it was observed from the statistical analysis that there was an abundance of observations related to Severity category 2. To avoid this imbalance in our observations, we proceeded with random sampling to achieve an equal distribution of 25,000 observations in each Severity category. The statistical analysis concluded that most observations had a duration of up to 3 hours, and the distance of most accidents did not exceed 0.5 miles. Therefore, we attempted to reclassify our dataset based on geography and weather conditions using clustering, while also looking for potential correlations between the new categories and the duration and distance of the accidents. We drew useful conclusions, such as that the western USA experiences accidents of shorter duration and distance. Finally, we examined a classification problem in our dataset. By utilizing the most significant data after the necessary preprocessing steps, we attempted to train a machine that, when provided with this data, would classify our observations into the corresponding Severity category. This attempt was made with two machines: a neural network and LinearSVC, with the neural network yielding better results, successfully predicting 76% of the observations.
+            </p>
+        </section>
+
+
+        <!-- Exploratory Data Analysis -->
+        <section id="eda" class="content-section">
+            <h2>Exploratory Data Analysis (EDA)</h2>
+            <p>Statistical summaries and visualizations revealed critical patterns:</p>
+            <ul>
+                <li>A pie chart of accident duration showed the majority lasted 0–3 hours.</li>
+                <li>Pie chart highlighted that most accidents impacted less than 0.5 miles of road.</li>
+                <li>Geographic indicated distinct accident hotspots.</li>
+            </ul>
+            <!-- Image Carousel for Figures 5-6 -->
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="../images/projects/severity/eda1.jpg" alt="Figure 5 - Accident Duration Histogram" style="width: 70%; height: auto;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../images/projects/severity/eda2.jpg" alt="Figure 6 - Affected Road Distances" style="width: 70%; height: auto;">
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Clustering Analysis -->
+        <section id="clustering" class="content-section">
+            <h2>Clustering Analysis</h2>
+            <p>To group accidents based on shared characteristics:</p>
+            <h3>K-Means Clustering</h3>
+            <ul>
+                <li>The elbow method identified four clusters as the optimal number.</li>
+                <li>The dataset was normalized, and dimensionality reduced using PCA (85% variance retained).</li>
+                <li>Clusters:
+                    <ul>
+                        <li><strong>E_COLD:</strong> Cold regions in the Eastern U.S.</li>
+                        <li><strong>E_HOT:</strong> Warm regions in the Eastern U.S.</li>
+                        <li><strong>W_COLD:</strong> Cold regions in the Western U.S.</li>
+                        <li><strong>W_HOT:</strong> Warm regions in the Western U.S.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Findings revealed that colder regions typically experienced longer accident durations and larger impacted areas.</p>
+            <!-- Image Carousel for Figures 7-8 -->
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="../images/projects/severity/clustering_kmeans.png" alt="Figure 7 - Elbow Method Plot" style="width: 75%; height: auto;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../images/projects/severity/clustering_kmeans_map.jpg" alt="Figure 8 - K-Means Clusters Map" style="width: 100%; height: auto;">
+                </div>
+            </div>
+
+            <h3>DBSCAN Clustering</h3>
+            <ul>
+                <li>DBSCAN identified an additional central cluster (CENTRAL), attributed to unique geographic and climatic conditions in mountainous regions like Colorado.</li>
+            </ul>
+            <!-- Image Carousel for Figures 9-10 -->
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="../images/projects/severity/clustering_dbscan.jpg" alt="Figure 9 - DBSCAN Clusters Map" style="width: 100%; height: auto;">
+                    <p>Figure 9 - Map of DBSCAN clusters, including the newly identified CENTRAL cluster.</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="../images/projects/severity/clustering_dbscan_table.jpg" alt="Figure 10 - Cluster Characteristics" style="width: 120%; height: auto;">
+                    <p>Figure 10 - Comparative table of cluster characteristics by temperature, humidity, wind speed, duration and distance.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Classification Task -->
+        <section id="classification" class="content-section">
+            <h2>Classification Task</h2>
+            <p>The goal was to predict accident severity based on selected features:</p>
+            <h3>Neural Networks</h3>
+            <ul>
+                <li>A sequential model with two hidden layers achieved an accuracy of 76%, with an F1 score confirming its strong predictive performance.</li>
+            </ul>
+            <!-- Image Carousel for Figures 11-12 -->
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="../images/projects/severity/classification_nn.jpg" alt="Figure 11 - Neural Network Training Curves" style="width: 70%; height: auto;">
+                    <p>Figure 11 - Accuracy and loss curves for training and validation datasets.</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="../images/projects/severity/classification_confusion.jpg" alt="Figure 12 - Confusion Matrix" style="width: 90%; height: auto;">
+                    <p>Figure 12 - Confusion matrix highlighting performance across severity levels.</p>
+                </div>
+            </div>
+
+            <h3>Linear SVC</h3>
+            <ul>
+                <li>Though computationally efficient, this model underperformed with an accuracy of 68%, highlighting its limitations compared to neural networks.</li>
+            </ul>
+            <!-- Image Carousel for Figure 13 -->
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="../images/projects/severity/classification_svc.jpg" alt="Figure 13 - SVC vs Neural Networks" style="width: 90%; height: auto;">
+                    <p>Figure 13 - Accuracy and F1 score comparison for Linear SVC vs. Neural Networks.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Insights -->
+        <section id="insights" class="content-section">
+            <h2>Key Insights</h2>
+            <ul>
+                <li>Western U.S. accidents tend to have shorter durations and smaller impacted distances compared to the East.</li>
+                <li>Machine learning models, especially neural networks, effectively predict accident severity, providing actionable insights for road safety measures.</li>
+            </ul><br>
+            <p>
+                This project demonstrates the application of advanced data analytics and machine learning techniques to solve real-world problems. It highlights my ability to process, analyze and derive insights from complex datasets, supported by visual evidence that aids understanding and engagement.
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Nikolaos Kokosis. </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="severityscript.js"></script>
+</body>
+</html>
