@@ -7,7 +7,7 @@
   
   body {
       font-family: 'Arial', sans-serif;
-      background-image: url('https://marlink.com/_Resources/Persistent/f/0/3/d/f03daa74ffa57f8a50cfd25000f7c7a4c155b1b6/blog%203-1727x910-1440x759.webp');
+      background-image: url('../images/projects/maritime1.jpg');
       background-size: cover;
       background-position: center center;
       background-attachment: fixed; /* Parallax effect */
