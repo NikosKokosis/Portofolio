@@ -40,3 +40,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
        alert("Failed to send message. Please try again later.");
     });
  });
+
+
+function showSection(sectionId) {
+    const sections = ['analysisprojects', 'scienceprojects'];
+    const btnDataAnalysis = document.getElementById('btn-dataanalysis');
+    const btnDataScience = document.getElementById('btn-datascience');
+
+    sections.forEach(id => {
+        document.getElementById(id).style.display = (id === sectionId) ? 'block' : 'none';
+    });
+
+    if(sectionId === 'analysisprojects') {
+        btnDataAnalysis.classList.add('active-outline');
+        btnDataScience.classList.remove('active-outline');
+    } else if(sectionId === 'scienceprojects') {
+        btnDataScience.classList.add('active-outline');
+        btnDataAnalysis.classList.remove('active-outline');
+    }
+}
+
+window.onload = () => showSection('analysisprojects');
+
+
